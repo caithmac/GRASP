@@ -2,25 +2,55 @@
 
 **Graph Representation Learning with Assay Supervision for Molecular Properties**
 
-GRASP is a 93.5M-parameter molecular graph Transformer. It was trained first on 1.54 billion ZINC20 molecule presentations with replaced-token detection, then adapted on sparse measurements from 642 ChEMBL assays. The fixed public encoder is the **50,000-step Step 2 snapshot** used for the paper's downstream evaluations.
+*Satya Pratik Srivastava · Rohan Gorantla · Sharath Krishna Chundru · Harshit Singh · Antonia S. J. S. Mey · Rajeev Kumar Singh*
 
-This repository provides molecular embeddings and a complete path to fine-tune, save, reload, and run a property predictor. The pretrained encoder alone does **not** predict a property value. The reported OpenADMET results use a learned layer mixture, atom-attention pooler, and a task-specific head trained on each endpoint; calling `encode()` returns the final-layer CLS embedding instead.
+Shiv Nadar University · University of Edinburgh
 
-## Install
+Molecular structures are plentiful. Experimental measurements are scarce, scattered across assays, and expensive to obtain. **GRASP learns from both:** it first learns the context of atoms in molecular graphs, then adapts that encoder using sparse bioactivity measurements. This repository releases the fixed **50,000-step Step 2 encoder** used in our paper, along with a direct path from molecular embeddings to a trained property predictor.
 
-Use Python 3.10–3.13 and a PyTorch installation suitable for your CPU or CUDA system. Then:
+[Model weights and card](https://huggingface.co/caithmac/GRASP) · [Example notebooks](notebooks/) · [Paper reproduction](reproduction/README.md) · [Citation](#citation)
+
+## How GRASP learns
+
+**Structure → assays → your endpoint.** The first stage sees 1.54 billion ZINC20 molecule presentations. Each atom is a radius-0 Morgan token; a three-layer generator proposes replacements at selected positions, and a 12-layer graph Transformer detects which tokens actually changed. Shortest-path distances give its attention layers graph context. The second stage adapts the encoder on 511,898 ChEMBL 36 molecules with labels from 642 sparsely observed assays. A task-specific readout is then trained for each downstream property.
+
+![GRASP graph replaced-token detection architecture: atom tokens, generator, graph distances, and discriminator](assets/model_architecture.png)
+
+*The paper's graph replaced-token detection figure shows **Step 1**: 25% of atom positions are selected, and a token is labelled replaced only when the generator's proposal differs from the original. The 12-layer discriminator uses the resulting tokens and graph distances. [View the vector PDF](assets/model_architecture.pdf) for the full-size figure.*
+
+The released model is the **Step 2 encoder**, after ChEMBL adaptation. It has 12 layers, width 768, 12 attention heads, 93.5 million parameters, and a 211-token vocabulary. It is a molecular representation model, not a ready-made experimental property predictor.
+
+## What the paper found
+
+On **23 OpenADMET endpoints**, evaluated over three reconstructed cluster-held-out splits per endpoint, full fine-tuning reached the lowest mean test MAE among the compared methods:
+
+| Method | Mean MAE ↓ | Endpoints where GRASP was lower |
+| :-- | --: | --: |
+| **GRASP, full fine-tuning** | **0.374** | — |
+| CheMeleon, full fine-tuning | 0.383 | 12 / 23 |
+| ECFP4–LightGBM | 0.408 | 16 / 23 |
+| Chemprop D-MPNN | 0.440 | 22 / 23 |
+
+The margin over CheMeleon is small and varies by endpoint. In the matched stage comparison, adding the complete ChEMBL adaptation stage lowered mean MAE from **0.407 to 0.374** and improved **21 of 23** endpoints. That comparison includes additional ChEMBL training and molecular exposure; it does not isolate assay labels alone. On the separate **22-task TDC ADMET** benchmark, GRASP had the better point estimate than the released CheMeleon result on **13 tasks**. That TDC comparison is descriptive because the models were not trained and selected in one paired pipeline. See the paper and [reproduction supplement](reproduction/README.md) for the split construction, per-endpoint scores, and limitations.
+
+**These are endpoint-specific results.** Calling `encode()` gives a final-layer CLS embedding. The paper's OpenADMET predictors instead learn a mixture of layers 4, 8, 10, and 12, attention-pool the atom tokens, and train a property head. The pretrained encoder alone does not produce those MAEs or predict an experimental property.
+
+## Start with the notebooks
+
+- **Extract embeddings:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing)
+- **Fine-tune, save, reload, predict:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing)
+
+Run cells from top to bottom. The fine-tuning notebook uses a small, **illustrative** RDKit-computed logP dataset; its output is not a paper benchmark. Select a GPU under **Runtime → Change runtime type** when available. Colab storage is temporary, so download any trained predictor you want to keep. The [versioned notebooks](notebooks/) are the source for these examples.
+
+## Install and extract embeddings
+
+Use Python 3.10–3.13. Install a PyTorch build suited to your CPU or CUDA system, then:
 
 ```bash
 git clone https://github.com/caithmac/GRASP.git
 cd GRASP
-pip install -e .
+python -m pip install -e .
 ```
-
-The core package includes the adapted MolE encoder and the DeBERTa attention implementation. See [license and attribution](#license-and-attribution) below. Model weights are downloaded from [caithmac/GRASP on Hugging Face](https://huggingface.co/caithmac/GRASP) when the default model ID is used.
-
-**Try in Colab:** [extract embeddings](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing) · [fine-tune and predict](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing). The [repository notebooks](notebooks/) contain the latest source. Run the cells from top to bottom; the first code cell installs this repository in Colab. For fine-tuning, select a GPU under **Runtime → Change runtime type** when one is available. The example runs on CPU too, more slowly. Colab runtimes are temporary, so download trained predictor files you want to keep.
-
-## Extract representations
 
 ```python
 from grasp import GRASPEncoder
@@ -30,22 +60,24 @@ vectors = encoder.encode(["CCO", "c1ccccc1"])
 print(vectors.shape)  # (2, 768)
 ```
 
-For a CSV with a `smiles` column:
+The default representation is the **final-layer CLS embedding**. For a CSV containing a `smiles` column, run:
 
 ```bash
-python -m grasp embed --model caithmac/GRASP --input-csv molecules.csv --output-csv embeddings.csv
+python -m grasp embed --model caithmac/GRASP \
+  --input-csv molecules.csv --output-csv embeddings.csv
 ```
 
-The API reports the row of an invalid SMILES and rejects molecules exceeding 511 atoms (the encoder's 512 positions include CLS). It does not silently drop or truncate molecules. The pretraining corpus was limited to 96 heavy atoms; larger downstream molecules can be processed within the positional capacity, but may be outside the familiar training distribution.
+Invalid SMILES are reported with their row number. The encoder does not silently truncate molecules: it rejects inputs beyond 511 atoms, because one of its 512 positions is reserved for CLS. Structural pretraining used molecules of at most 96 heavy atoms, so much larger inputs can be outside its familiar distribution even when they fit.
 
-## Fine-tune on a property
+## Fine-tune a property predictor
 
-Prepare `train.csv` and `valid.csv`, each with `smiles,target` columns and no overlapping SMILES. For binary classification, targets must be `0` or `1`. The command saves a complete predictor directory, including its encoder, readout, vocabulary, task settings, and target scaling.
+Provide separate `train.csv` and `valid.csv` files with explicit SMILES and target columns. For binary classification, targets must be `0` or `1`; for regression, predictions are returned in the target's original units. Keep validation structures separate when measuring transfer.
 
 ```bash
 python -m grasp finetune \
   --model caithmac/GRASP \
   --train-csv train.csv --valid-csv valid.csv \
+  --smiles-column smiles --target-column target \
   --task regression --method full --output-dir runs/my_property
 
 python -m grasp predict \
@@ -53,16 +85,18 @@ python -m grasp predict \
   --input-csv molecules.csv --output-csv predictions.csv
 ```
 
-`--method` can be `full` (default), `lora`, or `frozen`. These use the paper's layers 4/8/10/12, learned atom-attention pooling, and 512-unit endpoint head. The default learning rates are `1e-5`, `5e-5`, and `1e-3`, respectively. Regression predictions are returned in the training target's original units; binary predictions are probabilities for class 1. Use a validation set separated by chemical structure when assessing transfer. The [two notebooks](notebooks/) show embedding extraction and a short illustrative fine-tuning run.
+`full` is the default adaptation mode; `lora` and `frozen` are also available. The saved directory contains the encoder, learned readout and head, vocabulary, task settings, and regression target scaling needed to reload predictions. Binary predictions are probabilities for class 1.
 
-## Model identity and paper reproduction
+## Checkpoint and reproduction
 
-The source 50k encoder state dict has SHA-256 `7940ca66fc8f6785d6ae2e63b3965f69425e872cd28f4a975493fb1972742ee1`. `scripts/prepare_model.py` checks this identity before converting to `model.safetensors`, then verifies every tensor exactly. The release package retains the 211-token radius-0 vocabulary and the final encoder architecture explicitly.
+The original 50,000-step Step 2 state dict has SHA-256 `7940ca66fc8f6785d6ae2e63b3965f69425e872cd28f4a975493fb1972742ee1`. The released `model.safetensors` is a tensor-identical conversion; [`scripts/prepare_model.py`](scripts/prepare_model.py) checks the source hash and every converted tensor. We publish the vocabulary and architecture configuration beside the weights on [Hugging Face](https://huggingface.co/caithmac/GRASP).
 
-The [reproduction supplement](reproduction/README.md) contains the sanitized training, evaluation, audit, and provenance material. It is separate from the short user workflow. No raw ZINC, ChEMBL, OpenADMET, or TDC datasets are included.
+The [reproduction directory](reproduction/README.md) contains the sanitized training, evaluation, split, and provenance material. Raw ZINC20, ChEMBL, OpenADMET, and TDC data are not redistributed. GRASP uses 2D molecular graphs; it does not model 3D geometry or experimental uncertainty. Predictions from a fine-tuned head need domain checks and experimental validation.
 
-**Paper:** Srivastava et al., *GRASP: Graph Representation Learning with Assay Supervision for Molecular Properties*. The arXiv identifier will be added after posting. The model card describes the evaluation protocol and limitations; the notebook's illustrative run does not reproduce paper scores.
+## Citation
+
+Satya Pratik Srivastava, Rohan Gorantla, Sharath Krishna Chundru, Harshit Singh, Antonia S. J. S. Mey, and Rajeev Kumar Singh. *GRASP: Graph Representation Learning with Assay Supervision for Molecular Properties.* Preprint (arXiv identifier pending). See [`CITATION.cff`](CITATION.cff) for machine-readable authorship. We will add the arXiv link when it is assigned.
 
 ## License and attribution
 
-The adapted MolE-derived code and model release retain the upstream [CC BY-NC 4.0 terms](LICENSE). The bundled DeBERTa code retains its [MIT license](vendor/DEBERTA_LICENSE). GRASP builds on Recursion Pharmaceuticals' MolE and the DeBERTa implementation. See [NOTICE](NOTICE) for source attribution. Respect the terms of any datasets you use for fine-tuning.
+The adapted MolE-derived code and model retain [CC BY-NC 4.0](LICENSE) terms. The bundled DeBERTa code retains its [MIT license](vendor/DEBERTA_LICENSE). See [NOTICE](NOTICE) for attribution, and respect the terms of any datasets used for fine-tuning.
