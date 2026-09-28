@@ -8,7 +8,7 @@ This repository provides molecular embeddings and a complete path to fine-tune, 
 
 ## Install
 
-Use Python 3.10–3.12 and a PyTorch installation suitable for your CPU or CUDA system. Then:
+Use Python 3.10–3.13 and a PyTorch installation suitable for your CPU or CUDA system. Then:
 
 ```bash
 git clone https://github.com/caithmac/GRASP.git

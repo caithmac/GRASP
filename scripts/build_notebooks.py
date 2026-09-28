@@ -35,8 +35,10 @@ else:
     repo = Path('/content/GRASP')
     if not repo.is_dir():
         subprocess.run(['git', 'clone', '--depth', '1', 'https://github.com/caithmac/GRASP.git', str(repo)], check=True)
+    else:
+        subprocess.run(['git', '-C', str(repo), 'pull', '--ff-only'], check=True)
     os.chdir(repo)
-    subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', '-e', '.'], check=True)
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '-e', '.'], check=True)
 """
     write("01_embeddings.ipynb", [
         markdown("# GRASP molecular embeddings\n\nIn Colab, run all cells in order; the first code cell installs GRASP. Locally, run from the repository root after `pip install -e .`. The pretrained encoder returns representations, not property predictions. This notebook uses local release weights when present; otherwise it downloads `caithmac/GRASP`.\n"),

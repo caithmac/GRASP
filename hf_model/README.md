@@ -16,7 +16,7 @@ tags:
 
 ## Use
 
-Install the [GRASP code repository](https://github.com/caithmac/GRASP) in Python 3.10–3.12, then:
+Install the [GRASP code repository](https://github.com/caithmac/GRASP) in Python 3.10–3.13, then:
 
 ```python
 from grasp import GRASPEncoder
