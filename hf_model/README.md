@@ -16,7 +16,7 @@ tags:
 
 ## Use
 
-Install the [GRASP code repository](https://github.com/caithmac/GRASP) in Python 3.10, then:
+Install the [GRASP code repository](https://github.com/caithmac/GRASP) in Python 3.10–3.12, then:
 
 ```python
 from grasp import GRASPEncoder
@@ -27,6 +27,8 @@ print(embeddings.shape)  # (2, 768)
 ```
 
 This returns the final encoder-layer CLS state. The encoder does not output experimental property predictions by itself. The paper's primary OpenADMET protocol learns a layer mixture, atom-attention pooler, and endpoint head; the repository provides full, LoRA, and frozen fine-tuning modes for new labeled datasets.
+
+For a browser-based start, open the [embedding notebook in Colab](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/01_embeddings.ipynb) or the [fine-tuning notebook](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/02_finetune.ipynb).
 
 ## Model details and evaluation
 

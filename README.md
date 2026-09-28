@@ -8,7 +8,7 @@ This repository provides molecular embeddings and a complete path to fine-tune, 
 
 ## Install
 
-Use Python 3.10 and a PyTorch installation suitable for your CPU or CUDA system. Then:
+Use Python 3.10–3.12 and a PyTorch installation suitable for your CPU or CUDA system. Then:
 
 ```bash
 git clone https://github.com/caithmac/GRASP.git
@@ -17,6 +17,8 @@ pip install -e .
 ```
 
 The core package includes the adapted MolE encoder and the DeBERTa attention implementation. See [license and attribution](#license-and-attribution) below. Model weights are downloaded from [caithmac/GRASP on Hugging Face](https://huggingface.co/caithmac/GRASP) when the default model ID is used.
+
+**Try in Colab:** [extract embeddings](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/01_embeddings.ipynb) · [fine-tune and predict](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/02_finetune.ipynb). Run the cells from top to bottom; the first code cell installs this repository in Colab. For fine-tuning, select a GPU under **Runtime → Change runtime type** when one is available. The example runs on CPU too, more slowly. Colab runtimes are temporary, so download trained predictor files you want to keep.
 
 ## Extract representations
 
