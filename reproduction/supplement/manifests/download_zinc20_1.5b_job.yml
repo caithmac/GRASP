@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: anonymous-review-dl-zinc20-
+  labels:
+    kueue.x-k8s.io/queue-name: REVIEW_QUEUE
+    review/user: anonymous-review
+spec:
+  ttlSecondsAfterFinished: 3600
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        review/user: anonymous-review
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: download
+        image: python:3.10-slim
+        workingDir: /tmp
+        command: ["bash", "-lc"]
+        args:
+        - sed 's/\r$//' /workspace/chemrasayan/run_download_zinc20_1.5b.sh | bash -s 2>&1 | tee /mnt/download_zinc20_1.5b.log
+        resources:
+          requests:
+            cpu: "4"
+            memory: "8Gi"
+          limits:
+            cpu: "8"
+            memory: "16Gi"
+        volumeMounts:
+        - name: nfs
+          mountPath: /workspace/chemrasayan
+          readOnly: true
+        - name: ws
+          mountPath: /mnt
+      volumes:
+      - name: nfs
+        nfs:
+          server: NFS_SERVER_PLACEHOLDER
+          path: /EXTERNAL_NFS_PATH
+      - name: ws
+        persistentVolumeClaim:
+          claimName: WORKSPACE_PVC

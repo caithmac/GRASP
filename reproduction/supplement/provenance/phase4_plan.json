@@ -1,0 +1,15 @@
+{
+  "data_dir": "/mnt/data/zinc20_1.5b",
+  "train_parquet_shards": 1539,
+  "train_rows": 1538240669,
+  "prior_examples": 736000000,
+  "prior_exposure_passes": 0.47846869142945536,
+  "target_passes": 1.0,
+  "target_examples": 1538240669,
+  "effective_batch": 256,
+  "additional_optimizer_steps": 3133753,
+  "additional_examples": 802240768,
+  "final_examples": 1538240768,
+  "final_exposure_passes": 1.0000000643592397,
+  "note": "Exposure passes count presentations. Earlier interrupted runs restarted shuffle order, so this is not a claim of exactly one unique-data epoch."
+}

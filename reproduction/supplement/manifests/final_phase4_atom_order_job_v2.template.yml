@@ -1,0 +1,65 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: anonymous-review-phase4-atom-order-v2-
+  labels:
+    app: phase4-atom-order-v2
+    review/user: anonymous-review
+    kueue.x-k8s.io/queue-name: REVIEW_QUEUE
+    kueue.x-k8s.io/priority-class: batch-workload-priority
+spec:
+  completionMode: Indexed
+  completions: 8
+  parallelism: 1
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 604800
+  template:
+    metadata:
+      labels: {app: phase4-atom-order-v2, review/user: anonymous-review}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: benchmark
+          image: nvcr.io/nvidia/pytorch@sha256:72d016011185c8e8c82442c87135def044f0f9707f9fd4ec1703a9e403ad4c35
+          command: ["/bin/bash", "-c"]
+          args: ["sed 's/\\r$//' /workspace/chemrasayan/launch/run_final_phase4_atom_order_audit_v2.sh | bash -s"]
+          env:
+            - {name: RUN_ID, value: "REPLACE_WITH_UNIQUE_RUN_ID"}
+            - {name: PRELAUNCH_MANIFEST_SHA256, value: "REPLACE_WITH_PRELAUNCH_MANIFEST_SHA256"}
+            - name: SHARD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+            - {name: NUM_SHARDS, value: "8"}
+            - name: JOB_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['batch.kubernetes.io/controller-uid']
+            - name: JOB_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['batch.kubernetes.io/job-name']
+            - name: POD_UID
+              valueFrom: {fieldRef: {fieldPath: metadata.uid}}
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+            - name: POD_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
+            - {name: IMAGE_REFERENCE, value: "nvcr.io/nvidia/pytorch@sha256:72d016011185c8e8c82442c87135def044f0f9707f9fd4ec1703a9e403ad4c35"}
+            - {name: IMAGE_ID, value: "sha256:72d016011185c8e8c82442c87135def044f0f9707f9fd4ec1703a9e403ad4c35"}
+          resources:
+            requests: {cpu: "8", memory: 48Gi, nvidia.com/gpu: "1"}
+            limits: {cpu: "8", memory: 48Gi, nvidia.com/gpu: "1"}
+          volumeMounts:
+            - {name: nfs, mountPath: /workspace/chemrasayan, readOnly: true}
+            - {name: ws, mountPath: /mnt}
+            - {name: dshm, mountPath: /dev/shm}
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-H200
+      volumes:
+        - name: nfs
+          nfs: {server: NFS_SERVER_PLACEHOLDER, path: /EXTERNAL_NFS_PATH, readOnly: true}
+        - name: ws
+          persistentVolumeClaim: {claimName: WORKSPACE_PVC}
+        - name: dshm
+          emptyDir: {medium: Memory, sizeLimit: 16Gi}

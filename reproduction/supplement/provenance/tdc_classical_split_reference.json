@@ -1,0 +1,845 @@
+{
+  "historical_environment": {
+    "historical_run_date": "2026-07-22",
+    "pytdc": "0.4.1",
+    "raw_data_last_git_commit": "REDACTED_FOR_ANONYMOUS_REVIEW",
+    "rdkit_distribution": "rdkit-pypi==2022.9.5"
+  },
+  "historical_logs": {
+    "ames": {
+      "effective_rows": {
+        "test": 1093,
+        "train": 5094,
+        "valid": 1091
+      },
+      "sha256": "e9bff7c92be88c70f6fc6e9a0560f77fd361dbd7a159516eea5f88b5813f81a5"
+    },
+    "bbb_martins": {
+      "effective_rows": {
+        "test": 305,
+        "train": 1419,
+        "valid": 302
+      },
+      "sha256": "6bc6c83d6ce72c1bcf9f28a9ccc540bdb1c193d595f1434395198d560a2248c1"
+    },
+    "bioavailability_ma": {
+      "effective_rows": {
+        "test": 96,
+        "train": 448,
+        "valid": 96
+      },
+      "sha256": "fdd17eddd815bf388fd2ccc11d1386e6c99ab4e5a700e1b3b6c31493c1c03f85"
+    },
+    "caco2_wang": {
+      "effective_rows": {
+        "test": 137,
+        "train": 637,
+        "valid": 136
+      },
+      "sha256": "f8ad81826ede2c99f79542105bcdeb2949cf8334e760f27fc99c30b3f9b70c03"
+    },
+    "clearance_hepatocyte_az": {
+      "effective_rows": {
+        "test": 183,
+        "train": 849,
+        "valid": 181
+      },
+      "sha256": "53bf459fcb7ba15b4245946fb8616a0c9574f7cacef3dfa9b9bf34073f69b5a6"
+    },
+    "clearance_microsome_az": {
+      "effective_rows": {
+        "test": 166,
+        "train": 771,
+        "valid": 165
+      },
+      "sha256": "7a4432502de28395b56f24bff503d72abc3c599813d62b61cc91aab9695c961b"
+    },
+    "clintox": {
+      "effective_rows": {
+        "test": 222,
+        "train": 1026,
+        "valid": 220
+      },
+      "sha256": "ecc5f57d9ff44cc2a0f611b475ca095cc236ca8f9eafc36ae3a9f8269d49a76b"
+    },
+    "cyp2c9_substrate_carbonmangels": {
+      "effective_rows": {
+        "test": 101,
+        "train": 468,
+        "valid": 100
+      },
+      "sha256": "78e5826825f3091291a65acfdbb6045a55a60ed7d3e71e98fc634d7569d1400d"
+    },
+    "cyp2c9_veith": {
+      "effective_rows": {
+        "test": 1815,
+        "train": 8459,
+        "valid": 1812
+      },
+      "sha256": "194d2c70e29a5ecc5cc483179d697dea7769ec4ee236d2bf3d815e086edd6758"
+    },
+    "cyp2d6_substrate_carbonmangels": {
+      "effective_rows": {
+        "test": 101,
+        "train": 466,
+        "valid": 100
+      },
+      "sha256": "11fbfccba0338c754f84d8cd4ddcf4e6d76a3f742b9122e4e8eebac79485cf2a"
+    },
+    "cyp2d6_veith": {
+      "effective_rows": {
+        "test": 1969,
+        "train": 9187,
+        "valid": 1968
+      },
+      "sha256": "004b78bd342cf05fdf29285cff1b1741707afb13df4b828c6e3aa02fa72ba0f8"
+    },
+    "cyp3a4_substrate_carbonmangels": {
+      "effective_rows": {
+        "test": 102,
+        "train": 468,
+        "valid": 100
+      },
+      "sha256": "cb9441e496f6bf63d9a80536977d504c7c2f327cb040d3b68fb905e73c0df656"
+    },
+    "cyp3a4_veith": {
+      "effective_rows": {
+        "test": 1849,
+        "train": 8626,
+        "valid": 1848
+      },
+      "sha256": "cc411db4a5609d9d32ed2d5769d88eddc21947ae9dfa706573d1db31858e5bf3"
+    },
+    "dili": {
+      "effective_rows": {
+        "test": 72,
+        "train": 332,
+        "valid": 71
+      },
+      "sha256": "461ce7e7963c0abf5864b55ff77bbb9ec16dfa8eec65996fe58ea90f2e25c201"
+    },
+    "half_life_obach": {
+      "effective_rows": {
+        "test": 101,
+        "train": 464,
+        "valid": 96
+      },
+      "sha256": "2ba8f079b4655cc9d645b6cc317b313a028a6f8e07159baaa4749e3ff7380c97"
+    },
+    "herg": {
+      "effective_rows": {
+        "test": 99,
+        "train": 458,
+        "valid": 98
+      },
+      "sha256": "1b0d5e93e8970aa89b489a89dcc3be36dfcb3ffa712ef3ad9f812f3f65c58909"
+    },
+    "hia_hou": {
+      "effective_rows": {
+        "test": 88,
+        "train": 403,
+        "valid": 86
+      },
+      "sha256": "407105a4f8c0f35f3a1a22a085f8a72be3822c3d199b3fe8419e8a6c94e470c7"
+    },
+    "ld50_zhu": {
+      "effective_rows": {
+        "test": 1109,
+        "train": 5169,
+        "valid": 1107
+      },
+      "sha256": "681ede190142fc2e4aa5709c2a4a06c1120d359ab57b295f3189e4bec480aa0a"
+    },
+    "lipophilicity_astrazeneca": {
+      "effective_rows": {
+        "test": 630,
+        "train": 2939,
+        "valid": 629
+      },
+      "sha256": "18b13af534b3b41f5a467201f51f6595b405a0fa2f10d63d097870413c9a805a"
+    },
+    "pgp_broccatelli": {
+      "effective_rows": {
+        "test": 184,
+        "train": 852,
+        "valid": 182
+      },
+      "sha256": "91c99b6bd188dd5ceb8dbc52bac3fb5a81c1f3fad4675c1f42344706e5de0064"
+    },
+    "ppbr_az": {
+      "effective_rows": {
+        "test": 243,
+        "train": 1129,
+        "valid": 242
+      },
+      "sha256": "a053acdca0ebf56c1c2f6fb0ec1bd9e58f3e58594711a478f29c640b27593dbf"
+    },
+    "solubility_aqsoldb": {
+      "effective_rows": {
+        "test": 1490,
+        "train": 6976,
+        "valid": 1494
+      },
+      "sha256": "a4b9c567e2ff672d0197650c889c65d7ba06fce2f70f47feee5dbeb5edc8a97a"
+    },
+    "vdss_lombardo": {
+      "effective_rows": {
+        "test": 168,
+        "train": 777,
+        "valid": 167
+      },
+      "sha256": "aa53c918a7a94c656556cb899df9648d51f8f4a226c66c69c0f7366600b541df"
+    }
+  },
+  "protocol": "PyTDC 0.4.1 loader plus create_scaffold_split; scaffold seed 42; frac 0.70/0.15/0.15; post-split 1..96-heavy-atom filter",
+  "provenance_argument": "The raw .tab files were committed before the historical runs; the split algorithm is deterministic. All 23 reconstructed effective partition counts exactly match the retained historical logs.",
+  "schema_version": 1,
+  "task_order": [
+    "bbb_martins",
+    "clintox",
+    "hia_hou",
+    "lipophilicity_astrazeneca",
+    "herg",
+    "ames",
+    "dili",
+    "bioavailability_ma",
+    "caco2_wang",
+    "pgp_broccatelli",
+    "solubility_aqsoldb",
+    "ppbr_az",
+    "vdss_lombardo",
+    "cyp2c9_veith",
+    "cyp2d6_veith",
+    "cyp3a4_veith",
+    "cyp2c9_substrate_carbonmangels",
+    "cyp2d6_substrate_carbonmangels",
+    "cyp3a4_substrate_carbonmangels",
+    "half_life_obach",
+    "clearance_microsome_az",
+    "clearance_hepatocyte_az",
+    "ld50_zhu"
+  ],
+  "tasks": {
+    "ames": {
+      "loader_rows": 7278,
+      "partitions": {
+        "test": {
+          "effective_rows": 1093,
+          "membership_sha256": "66557a1e14cccda00c7ade103eb02eb27b61b5d1a81b90049f7535be26df5eea",
+          "ordered_rows_and_labels_sha256": "497677101cac32d59d9b62544103a4827fb6558afc91f7118612945c5814fcce",
+          "pre_filter_rows": 1093,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 5094,
+          "membership_sha256": "913c64039e43c0945f3458061573687a78f37435d8ca77dfd066e0de146d55e8",
+          "ordered_rows_and_labels_sha256": "9dbcc683007e35cf47ae6b739f75b244b55c26a2a5f9aff5d2481b30b2bd8417",
+          "pre_filter_rows": 5094,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 1091,
+          "membership_sha256": "473dd2eb9c7bf6b9735f7a033d475bf587b71643f4cff0fae9efdeec19a76688",
+          "ordered_rows_and_labels_sha256": "3e685f275e20113df40f70aebc245e89a0cbf723609fd9dbe1abfc302092e0bb",
+          "pre_filter_rows": 1091,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "5a8b6d2bab9155cac0d5e5fae9508ef4e7833bfb66f07f0b19e085b9e8f49933"
+    },
+    "bbb_martins": {
+      "loader_rows": 2030,
+      "partitions": {
+        "test": {
+          "effective_rows": 305,
+          "membership_sha256": "d9de7599141fffdddf6470001e34e5da19f65a62093a0079c6c9b7741423a230",
+          "ordered_rows_and_labels_sha256": "7cecb25b4dfdfeb1fcd95bdfb59c6b0672b76ab8b12fb7bd19ec3073b1961a1b",
+          "pre_filter_rows": 305,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 1419,
+          "membership_sha256": "b0e26bcb0e568ec4fe0584c773c492566b9586a4967ff702673bcca4127711c4",
+          "ordered_rows_and_labels_sha256": "ec23b926c9afa494fcb53caf0a07500f37bcdab91e6f72e39b4b9788a16f5c0a",
+          "pre_filter_rows": 1421,
+          "removed_invalid_or_over_96": 2
+        },
+        "valid": {
+          "effective_rows": 302,
+          "membership_sha256": "1173869d60e0c95ae5f38ce337cb1358db01c87ca6d878308b9cfd51c899421c",
+          "ordered_rows_and_labels_sha256": "9a7a5b01264d41084d247e441a64e6abfc45d708343a7e66bd3b4a98275f5c2d",
+          "pre_filter_rows": 304,
+          "removed_invalid_or_over_96": 2
+        }
+      },
+      "source_sha256": "c1dbd8943bb9f8433de3c40288b6ab785393a864ac54ef1d189c4db547780b94"
+    },
+    "bioavailability_ma": {
+      "loader_rows": 640,
+      "partitions": {
+        "test": {
+          "effective_rows": 96,
+          "membership_sha256": "f6ec678634c850884be64e04f9876bad8201b6849d3de622e4fe917e42a7fe2f",
+          "ordered_rows_and_labels_sha256": "cb5a8a38a64fe1a235bbab0275aca6a2af3c13a0db89d3a76097c5fde562a50b",
+          "pre_filter_rows": 96,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 448,
+          "membership_sha256": "8e9578c49097eebe633dfa7ea3682845f3888c9dbdf13020b9794b4f95fe9a1c",
+          "ordered_rows_and_labels_sha256": "cb0d421c2114a9adcbd6cea4cd88c124e41975d78fdd5dc468db9eb48763ff2b",
+          "pre_filter_rows": 448,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 96,
+          "membership_sha256": "f939ddf99713538e9157209dba9fd288553f59624df941872974b854fe895345",
+          "ordered_rows_and_labels_sha256": "528fd6f86fc4ec95e761e89be5f2e8cb3f0f012f6e4125102e10886c18eec547",
+          "pre_filter_rows": 96,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "d1e0efa332153dd3efcdc2346adf5e2c9666a97d7aa186d119e2de76679ad1a5"
+    },
+    "caco2_wang": {
+      "loader_rows": 910,
+      "partitions": {
+        "test": {
+          "effective_rows": 137,
+          "membership_sha256": "b50769f809b68f72d8a38aa1ffecf05a88248aadf6d11f870d3812b177104d30",
+          "ordered_rows_and_labels_sha256": "a7b0147a06c9c67b95c5236ba6f306b065d9e939a3ed15b0d2c7f1e532e261ad",
+          "pre_filter_rows": 137,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 637,
+          "membership_sha256": "57ecc3775c75e8cb6e77b13ba2475f49ef10f5fcfe26cc03fb9114d782da120b",
+          "ordered_rows_and_labels_sha256": "44818e854afb9583617b26c3ce792588fa3dc0a042cdc268bf35f0a6f2897f35",
+          "pre_filter_rows": 637,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 136,
+          "membership_sha256": "d3f443060d437fdbdd9ee43484f484b7d1124f944e7478e9b7f19b8afa186b02",
+          "ordered_rows_and_labels_sha256": "db3788541284c5451fee8ba492f86447ed20d51a78515b234a3b1d742d1b5eb5",
+          "pre_filter_rows": 136,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "3736283185bd0e40381072a5a422417cbad5ad386e0f6bf1f4fe5094d5cb2fb2"
+    },
+    "clearance_hepatocyte_az": {
+      "loader_rows": 1213,
+      "partitions": {
+        "test": {
+          "effective_rows": 183,
+          "membership_sha256": "fc9b6662f4b1727eea17281707027efc5321c22ce5e0fe2ec0745bd7f0bfcf43",
+          "ordered_rows_and_labels_sha256": "f401f51464b2ee79f0e2bca0333f454f9eb4a9784e7bccf554842435982a09e0",
+          "pre_filter_rows": 183,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 849,
+          "membership_sha256": "61fc8c1a342526b07783a7217cdb2097b4f019dcf6ba72e1c4d01294691c1d84",
+          "ordered_rows_and_labels_sha256": "8100022b0a847f5b26038a88f65cd16dd056215809fa98755fa83bad3004b1e1",
+          "pre_filter_rows": 849,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 181,
+          "membership_sha256": "27527b262feea1b5de1de4632d7940c3c8df57f0924433c33779792827847c2e",
+          "ordered_rows_and_labels_sha256": "d2a2a4cb0404b4c36be1ae9abb64ef7687f9289b38e0d75e4391cd0ae3e61fca",
+          "pre_filter_rows": 181,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "0c5bffb4024ed989969c075e0e6b59e88a40926e09cb86c086243a26d747eb90"
+    },
+    "clearance_microsome_az": {
+      "loader_rows": 1102,
+      "partitions": {
+        "test": {
+          "effective_rows": 166,
+          "membership_sha256": "d41b5d6024d523ded8cd55889dc5488eed8211802f2ee95136d7d70b5ebf52bd",
+          "ordered_rows_and_labels_sha256": "618eda633d921b3bcb05054b442b60e07d7c382b40fa4d70198d8154ddd0b230",
+          "pre_filter_rows": 166,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 771,
+          "membership_sha256": "1cff2a097e99889fa264a21f0588fc0e2b4d2f5be0e8932df0e885069fe25c8f",
+          "ordered_rows_and_labels_sha256": "8992f083a5939557053b3b9f06537e39b4aa1195c55da5c0824ff8be230d7f9e",
+          "pre_filter_rows": 771,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 165,
+          "membership_sha256": "8aa0e40d97ba75bfc40cf4df83d9a3a7fc59f66c7b8ec6564004e82264ec295a",
+          "ordered_rows_and_labels_sha256": "667127dfac67117939a88e60e8c483fa731bb894930ab99df2190903fdbf4ee8",
+          "pre_filter_rows": 165,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "001b3c962820c97084a07f70cd9313e08876ebaa24b926c6c707256c12cf33d7"
+    },
+    "clintox": {
+      "loader_rows": 1478,
+      "partitions": {
+        "test": {
+          "effective_rows": 222,
+          "membership_sha256": "da3e1de2ab32736a99e3c674d40788d682a9210f20a53d748cd1d77e3c556cb3",
+          "ordered_rows_and_labels_sha256": "d5bd9d8ef98cbc8993ac0c22943e8cdeba039201222510deffd6e7bec2cf1d7e",
+          "pre_filter_rows": 223,
+          "removed_invalid_or_over_96": 1
+        },
+        "train": {
+          "effective_rows": 1026,
+          "membership_sha256": "09b9cbe2da0961b7576466f11106357c86f04e29b168bbbbe6ac89738956bb76",
+          "ordered_rows_and_labels_sha256": "41b24ea1cf1b69633b93e2f9ae79572112f135bc1fbae433321ebe014fa070a9",
+          "pre_filter_rows": 1034,
+          "removed_invalid_or_over_96": 8
+        },
+        "valid": {
+          "effective_rows": 220,
+          "membership_sha256": "67667d32012bcf895bab3909aadadf86d11c34f6f9953ffff8ed6d3daf26d388",
+          "ordered_rows_and_labels_sha256": "36d5caf4dc4d0278dda3f51ddc21441db2ca80518d689090508806950bb35f73",
+          "pre_filter_rows": 221,
+          "removed_invalid_or_over_96": 1
+        }
+      },
+      "source_sha256": "f4b1c85fd73bc11820df5dae687bf944ec537f1bfcc477d4340e725f12549f21"
+    },
+    "cyp2c9_substrate_carbonmangels": {
+      "loader_rows": 669,
+      "partitions": {
+        "test": {
+          "effective_rows": 101,
+          "membership_sha256": "b58c54dba638327bf011d4032be3c27e0ca617d35e5241893373d39a718ab836",
+          "ordered_rows_and_labels_sha256": "baec30d4d4683f631cbb23ee9e4135c0f8902bdd276aa5ba380b24fc1ab946d9",
+          "pre_filter_rows": 101,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 468,
+          "membership_sha256": "7c1efbbaee7ce597b131eaa0fbceb6dedd92fab96b129cf57dd241dbe5859121",
+          "ordered_rows_and_labels_sha256": "1bc9e48d5b8c0816314f7e75b7ac6d44edf1bce998d3b4b47bdcbbe00d88168f",
+          "pre_filter_rows": 468,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 100,
+          "membership_sha256": "a8031c6b9b47090905da7c624edbca1e3f03e9bbcc6748608665865cd8379c9d",
+          "ordered_rows_and_labels_sha256": "2a3360139ae5823b98d5df1408040268dc2ea955af992f2085c7196ba6038d4f",
+          "pre_filter_rows": 100,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "1a694a34fbbd08bbcf032e00f2e0e6a91829de8e3b02ce9121b33181a6ac1398"
+    },
+    "cyp2c9_veith": {
+      "loader_rows": 12092,
+      "partitions": {
+        "test": {
+          "effective_rows": 1815,
+          "membership_sha256": "13eadffa59c06c224814a0b10a92948567a52ec2ed06cf3d1c565dedad588a44",
+          "ordered_rows_and_labels_sha256": "fe33ca9f5ca7075b63571191338fc93c4371624b8f69ab83865b5f005d5c3089",
+          "pre_filter_rows": 1815,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 8459,
+          "membership_sha256": "7e57541390c3fd35f39a7e7ec197f9896be4469c69ef1bccc67191b0023da68a",
+          "ordered_rows_and_labels_sha256": "f44e83323d459c485ba45b099610e3bc4a68ccf9cf8422a9cdb97e6937519aeb",
+          "pre_filter_rows": 8464,
+          "removed_invalid_or_over_96": 5
+        },
+        "valid": {
+          "effective_rows": 1812,
+          "membership_sha256": "129404ec8b4c47ff7d4abf11ca6efda353b56ef38c698ae9a44fb838e37c8cc6",
+          "ordered_rows_and_labels_sha256": "5a576314f086234082fc950d2e6b85556b16bf272c0502768a6082485a187df3",
+          "pre_filter_rows": 1813,
+          "removed_invalid_or_over_96": 1
+        }
+      },
+      "source_sha256": "6ee320548179ddb729335ce4419a40548b992b77a90e502ea81ecd946aee64eb"
+    },
+    "cyp2d6_substrate_carbonmangels": {
+      "loader_rows": 667,
+      "partitions": {
+        "test": {
+          "effective_rows": 101,
+          "membership_sha256": "f8c80ed3605e7d28d386f954762ab9c366585a9c13dd60188d8d5059b224f9d5",
+          "ordered_rows_and_labels_sha256": "4835251be991759bc89db60b330b8be08fc03d9b21b39518fba448b2c8d0e208",
+          "pre_filter_rows": 101,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 466,
+          "membership_sha256": "0e25fda004c7f639ae2cece74f3fc1f1dd85332332503f9ab6c0ea2a7bc57064",
+          "ordered_rows_and_labels_sha256": "d823e0952a036989a0a8c0884781371249eea096726ddd638a7c51a58a0dcceb",
+          "pre_filter_rows": 466,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 100,
+          "membership_sha256": "e3bd20206861214210bf4c2f3f12a6409f3145d7d075d980e34ca7e028a347d7",
+          "ordered_rows_and_labels_sha256": "b62b4a362fcc39e3f02369eaac6dc1e8d6d5cb06eea497bff82c0b359cb7ba72",
+          "pre_filter_rows": 100,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "9fdc9557afed313093729c4a3394a4f5e423d64f6b43977a9b6aa062e599d7a9"
+    },
+    "cyp2d6_veith": {
+      "loader_rows": 13130,
+      "partitions": {
+        "test": {
+          "effective_rows": 1969,
+          "membership_sha256": "6c518aaceb429250678b849a088add35c2875263e62c062ab6363fe22ff6e339",
+          "ordered_rows_and_labels_sha256": "259b9b6844412bfcc4783c2e1f20f1f537c9afd82285f35490a4f76d847b4ab4",
+          "pre_filter_rows": 1970,
+          "removed_invalid_or_over_96": 1
+        },
+        "train": {
+          "effective_rows": 9187,
+          "membership_sha256": "2d7443755e604848d7b8f745ac50814ed2ac2b5b0fe55f4b1f72e1072ee1db93",
+          "ordered_rows_and_labels_sha256": "1d1e9540e7443123ee97222828c78820f077333330c103de357a7b178b057e8f",
+          "pre_filter_rows": 9191,
+          "removed_invalid_or_over_96": 4
+        },
+        "valid": {
+          "effective_rows": 1968,
+          "membership_sha256": "ab55f04bdd6d8ff47043ef7a658bfe4f58e006456c889914b6b72ae9752f37fb",
+          "ordered_rows_and_labels_sha256": "cc07e6ed4d1f6266a5141cf33fe03edfca509725611d9d3bd45f2b7a9ef1f87e",
+          "pre_filter_rows": 1969,
+          "removed_invalid_or_over_96": 1
+        }
+      },
+      "source_sha256": "3924060df83a896ae6e555706404f327cfeaf80d783c05fd2ece2fb5abb3b0a8"
+    },
+    "cyp3a4_substrate_carbonmangels": {
+      "loader_rows": 670,
+      "partitions": {
+        "test": {
+          "effective_rows": 102,
+          "membership_sha256": "1fce04da8bb1b87206796d82cee6abf73a402a19995ddba2ce1bbd6684126898",
+          "ordered_rows_and_labels_sha256": "a47652c588126d79b283876ee9a0d05fc5efda6b0434cc5e88b36ccdbb3dfbe9",
+          "pre_filter_rows": 102,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 468,
+          "membership_sha256": "edb5f990f1f4ba1c5f24eb1c640e1d4a03b66898299dc83067ea0575b5150609",
+          "ordered_rows_and_labels_sha256": "56592956e92b5d11b4c4e1481cb3e02d949d8744d37bb6f0bf0f9578d31846f4",
+          "pre_filter_rows": 468,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 100,
+          "membership_sha256": "a7d0cdd1b807cd9be2000fc8db9449747ed9ffcd31e16f6c19b908bbcc25c761",
+          "ordered_rows_and_labels_sha256": "c69d367ed48168db42b00e33ef794712cfa1f6f892485512ebe8b341436ae43a",
+          "pre_filter_rows": 100,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "17be8b31d6d99e0a43c2b4c95e38d48904a30b4e4fc53419a13208db061d259b"
+    },
+    "cyp3a4_veith": {
+      "loader_rows": 12328,
+      "partitions": {
+        "test": {
+          "effective_rows": 1849,
+          "membership_sha256": "37f80ed9b1abd4f850a39a19e4eae06201f5bdbad2dc5ae79ec371f01407c9a6",
+          "ordered_rows_and_labels_sha256": "bfd90978391b8d5b2ac73f4d97afbe8b798e7eb809b6225124929fa3dac9b143",
+          "pre_filter_rows": 1850,
+          "removed_invalid_or_over_96": 1
+        },
+        "train": {
+          "effective_rows": 8626,
+          "membership_sha256": "998655d5004c82ab4720df338325f2c61aca6e47b62ef2daf50fd9fbda989ed0",
+          "ordered_rows_and_labels_sha256": "5be798c62660940b2c53fd92c1010b22207c002f6f4dffcd4068d0641615f151",
+          "pre_filter_rows": 8629,
+          "removed_invalid_or_over_96": 3
+        },
+        "valid": {
+          "effective_rows": 1848,
+          "membership_sha256": "9f4cf3135e7834ce03b46ec5b4daf35e0d4cd5133da56cc75e3c42f7a808ec62",
+          "ordered_rows_and_labels_sha256": "e5cca42e6ad84d58ea4cb609b9c2fe705cb3efad9effc0ce9433bed015b95e9c",
+          "pre_filter_rows": 1849,
+          "removed_invalid_or_over_96": 1
+        }
+      },
+      "source_sha256": "bbd8f965ddfb397946e45b256caf707f38d0e12e6704b989e2fe141c5cb2c4d3"
+    },
+    "dili": {
+      "loader_rows": 475,
+      "partitions": {
+        "test": {
+          "effective_rows": 72,
+          "membership_sha256": "c48681f82d2d482bcffad4dece2528a1864dee43eae71370d4eeb9a7898b6579",
+          "ordered_rows_and_labels_sha256": "7c7ef4485aa9f405879093e28833e72d3f686fcf6475298947db0103447a4d0e",
+          "pre_filter_rows": 72,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 332,
+          "membership_sha256": "c1a1d22a07c6ba636bd7c1ca84144ae3cecacb6ea4f4d90d2f6ab5eff5e6a1ad",
+          "ordered_rows_and_labels_sha256": "829f76fe2fd33ec03667b66b59040ac8e0429913069ea0b9cedfb1b5e32020cc",
+          "pre_filter_rows": 332,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 71,
+          "membership_sha256": "9d481aa83e1005653b9f6737870a8af955f44572ad751495ddf43d3d9471d7d9",
+          "ordered_rows_and_labels_sha256": "d84eccc436560eb15584707bb2d3613a75cd8ba8719b7d4a51fd7c91bc2cf20a",
+          "pre_filter_rows": 71,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "70f5dcdf376f8f29c26bf70a0dac34d83c381b45b5f65def2932316f81f23e47"
+    },
+    "half_life_obach": {
+      "loader_rows": 667,
+      "partitions": {
+        "test": {
+          "effective_rows": 101,
+          "membership_sha256": "4939d66d1013ed50140ccfc1fb76547cc4a0ad1f06a751f36e91a06b65aa0c2b",
+          "ordered_rows_and_labels_sha256": "187653de02aa479c84566f0838bcbae4c29e11fca1664c452b770bc775abc37b",
+          "pre_filter_rows": 101,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 464,
+          "membership_sha256": "3ec60921d10729cb0ef8c72a93da2cba4967d070a0a945eba3a94b18dbc7973c",
+          "ordered_rows_and_labels_sha256": "6be0dca5d67575d3a6640e0ac0a7bb8faefb4fae1c0ac7ed1267cad31cc219e6",
+          "pre_filter_rows": 466,
+          "removed_invalid_or_over_96": 2
+        },
+        "valid": {
+          "effective_rows": 96,
+          "membership_sha256": "7eb966d7186589438614c0faca04830ff2247e09b87d7b3fe248b184a85239c4",
+          "ordered_rows_and_labels_sha256": "b83e146d89de1c4b54c4a35fef6c8656ea86a834cceb0d2897f8574e0a875eb5",
+          "pre_filter_rows": 100,
+          "removed_invalid_or_over_96": 4
+        }
+      },
+      "source_sha256": "f198f22c9624c853c15d21d0e5a7c26b71e65a6a1baf9427f1bf2c8890476668"
+    },
+    "herg": {
+      "loader_rows": 655,
+      "partitions": {
+        "test": {
+          "effective_rows": 99,
+          "membership_sha256": "a4accf20ca3f17e5e0537b04f0aec68d14e5810194e859fdaa990aeed4022c12",
+          "ordered_rows_and_labels_sha256": "8df2b99b4400df6e3c4ca475cd9b62294321092b18a290e8e40ab1c3fe968998",
+          "pre_filter_rows": 99,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 458,
+          "membership_sha256": "35ac542593e958ef9ead4f3f2c0dc1fa9d36cd4574068aa36df66279ef8395df",
+          "ordered_rows_and_labels_sha256": "017a69fcc16aff7b8c61d92104c504a21f808eb5700467041672e3492ef97406",
+          "pre_filter_rows": 458,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 98,
+          "membership_sha256": "0a2cfa8fd95a01896d9507a4c4cfcf265491643c16768a0f9dad2cfedd5ee4d5",
+          "ordered_rows_and_labels_sha256": "5f64054177f665f579ecf5b576999e6a101fecd6bfd12b8988155416e3c4a731",
+          "pre_filter_rows": 98,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "afcf741054477aaeed65950dfb2ef86aed360914a9c0dd8d7ec671aba394c0fe"
+    },
+    "hia_hou": {
+      "loader_rows": 578,
+      "partitions": {
+        "test": {
+          "effective_rows": 88,
+          "membership_sha256": "bc9b0991c5fe9101ae8d499f275702b7c77372dfb0cf86f77eebd9e70dcb4335",
+          "ordered_rows_and_labels_sha256": "dfb5fb9f9786f2235c16a48eed732b63034cb947063534889d2aeecbcdcd035c",
+          "pre_filter_rows": 88,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 403,
+          "membership_sha256": "590e25012e1770172563aeac7395cac97184ca6fdc4f23f9c7971233a042ad9a",
+          "ordered_rows_and_labels_sha256": "5d425755ee23a87d9f11ce1c567a677cbbae1f37c4b0d94e9668c5d81bf76252",
+          "pre_filter_rows": 404,
+          "removed_invalid_or_over_96": 1
+        },
+        "valid": {
+          "effective_rows": 86,
+          "membership_sha256": "8f8e44d10cf570bc3ac6e3a56568d85c8999853a7381035740423fadd0fd97eb",
+          "ordered_rows_and_labels_sha256": "57bfce876903aab67db94a5a0675191b1923447cb9ce9b752e0a4cba0100505c",
+          "pre_filter_rows": 86,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "6d8f8c0b0e709018b20ca8d5f54590c77e6c296cafdc6f2d26c5b4d4168f2e12"
+    },
+    "ld50_zhu": {
+      "loader_rows": 7385,
+      "partitions": {
+        "test": {
+          "effective_rows": 1109,
+          "membership_sha256": "1df86097fb9b80e21b5c74e68339105b12ebb4bcab1daf38d03fbeb02f310eca",
+          "ordered_rows_and_labels_sha256": "0aa75e22b03af46b861c6b618cd6d260096fb81338db874b5dad78e8518908d8",
+          "pre_filter_rows": 1109,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 5169,
+          "membership_sha256": "b075a171f385c7f265d6d648c9d7ec70f6b8912f83ba315ea03df4da043383aa",
+          "ordered_rows_and_labels_sha256": "f1815782e1d94c5e70564377ed9e5910933c08341cd8ed03f95f38c9f993a4f5",
+          "pre_filter_rows": 5169,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 1107,
+          "membership_sha256": "af0448ee215316ce89706a120998d2fd730b90362779df7559a8fab322736865",
+          "ordered_rows_and_labels_sha256": "aff9a54cfeda64714af4c1e00b9939c77781dc1294389517a2d4b9bb41aba89c",
+          "pre_filter_rows": 1107,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "66b36d39088fe81e89f08c27e00bc188a0d9308ec6720e058b2ea74dd6a76f18"
+    },
+    "lipophilicity_astrazeneca": {
+      "loader_rows": 4200,
+      "partitions": {
+        "test": {
+          "effective_rows": 630,
+          "membership_sha256": "3c2e3288ff485fb1cc44cb2df1b61a774e2988dbd842c55e174222e053d2794f",
+          "ordered_rows_and_labels_sha256": "6cce0d997000bffe091b4cb1f592e0c6d42a554ef2b70c17b10e8b73c9850472",
+          "pre_filter_rows": 630,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 2939,
+          "membership_sha256": "0dc2ac52ea6cb1c3dfd2ab6ee79b4727a39e2a0d5b32b0273dcec56626a690f1",
+          "ordered_rows_and_labels_sha256": "3d7d225783375e7ad142e50b0c98265618c31013a97f1dea01b9a45b92b0052b",
+          "pre_filter_rows": 2940,
+          "removed_invalid_or_over_96": 1
+        },
+        "valid": {
+          "effective_rows": 629,
+          "membership_sha256": "cad17aadd5d017339280edea88f0ffd43032f3b8420d18a815f5dd7b63784fd5",
+          "ordered_rows_and_labels_sha256": "675e9462ad6275226618b37d090855966cceb065c57f301584e5610bab9bc75b",
+          "pre_filter_rows": 630,
+          "removed_invalid_or_over_96": 1
+        }
+      },
+      "source_sha256": "f651a2f47ad17139c96986c36f2cdb7636050905473e3bd2674b2e15334d2554"
+    },
+    "pgp_broccatelli": {
+      "loader_rows": 1218,
+      "partitions": {
+        "test": {
+          "effective_rows": 184,
+          "membership_sha256": "8473bd4668936b421f304d772835775beb91ec8ce501cb92a3ff9be133006435",
+          "ordered_rows_and_labels_sha256": "6a0bcb3348fd613a4161f66060a2d09023e01b4a7a50cbc7590c558cd99872d7",
+          "pre_filter_rows": 184,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 852,
+          "membership_sha256": "6006f537c9e304fb37af2db1959d36147e7bea5e4cf204ea327f78be36fcd096",
+          "ordered_rows_and_labels_sha256": "5ed1ab54661547ee061aac1a64c5031ba144ce5c3f1f7299c30b044017003a33",
+          "pre_filter_rows": 852,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 182,
+          "membership_sha256": "99c400b76b4b6e8f6eada4fa6bae97ae2014ab62f841ba283353a8fd52f6c8da",
+          "ordered_rows_and_labels_sha256": "684a5db027c402c71f40f7694f1a58a5f253537954829b2a7ece64dfd1a45fd1",
+          "pre_filter_rows": 182,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "ce10019c4ce215f9c32130d7da77cf2e34aad89b2886969136ea3fc5af7e8a99"
+    },
+    "ppbr_az": {
+      "loader_rows": 1614,
+      "partitions": {
+        "test": {
+          "effective_rows": 243,
+          "membership_sha256": "b5b707bb6e9070b362284e8eebbfde6beb92259f695dcb3368cbeb067d8a8eaf",
+          "ordered_rows_and_labels_sha256": "03ee381300134d0b47036b603276dc7b81865b252999dce896c5ae2f4cd54f34",
+          "pre_filter_rows": 243,
+          "removed_invalid_or_over_96": 0
+        },
+        "train": {
+          "effective_rows": 1129,
+          "membership_sha256": "68d227dd90de8f3ae236c9e838c0b888863e786dca0317e08ecd299c7a69a29f",
+          "ordered_rows_and_labels_sha256": "bc0b85ed5aedf999c802229e8c9a6980f4477ddf3d2c325241f6c5c3a11fbbfb",
+          "pre_filter_rows": 1129,
+          "removed_invalid_or_over_96": 0
+        },
+        "valid": {
+          "effective_rows": 242,
+          "membership_sha256": "fda88996a6cc60b4c5d09bacb36b03fa2a2b62fdeaa669b8057bacfa0fd8e9d5",
+          "ordered_rows_and_labels_sha256": "59f01992a6e6100225c3f57feaf035e534cafb2f84effec99aad201df3d8317b",
+          "pre_filter_rows": 242,
+          "removed_invalid_or_over_96": 0
+        }
+      },
+      "source_sha256": "0c126c3f8400c13a3e08cac52734d01bba16bdb60fcf3c090d65287798be02bf"
+    },
+    "solubility_aqsoldb": {
+      "loader_rows": 9982,
+      "partitions": {
+        "test": {
+          "effective_rows": 1490,
+          "membership_sha256": "e724ac02d0be8647a43418408dd30a6802cf9dc27ffeea39d4dc5723937823d6",
+          "ordered_rows_and_labels_sha256": "ea0835cbadee937b45723413514e94a9fe4387833a040daf7e10bb5a221bc978",
+          "pre_filter_rows": 1498,
+          "removed_invalid_or_over_96": 8
+        },
+        "train": {
+          "effective_rows": 6976,
+          "membership_sha256": "63b282f52c75f1f13d7207cf7a41132cfdc0c498600f4801629a38cb5859f35c",
+          "ordered_rows_and_labels_sha256": "3e352340d44e7dec6a8ed9a45537cac231c4e70519dd40ad98c9a2071935a65f",
+          "pre_filter_rows": 6987,
+          "removed_invalid_or_over_96": 11
+        },
+        "valid": {
+          "effective_rows": 1494,
+          "membership_sha256": "6bf4f7e12c04b7b2e5814ff3dfa0791b532c047509d902ba1a408a4a29bed163",
+          "ordered_rows_and_labels_sha256": "4c9fa56134b51f4da60b92bdead0f5ce0049680172b2b019b88f3de2f9f5c2ae",
+          "pre_filter_rows": 1497,
+          "removed_invalid_or_over_96": 3
+        }
+      },
+      "source_sha256": "ddc62b2219eaea5517e2f3fe268db59197c53f13793e2f0587445a0c12793d49"
+    },
+    "vdss_lombardo": {
+      "loader_rows": 1130,
+      "partitions": {
+        "test": {
+          "effective_rows": 168,
+          "membership_sha256": "920525c47e00da8a6b6f7993e76a0499b08e67e7f5f050a4e02fca19dec483fd",
+          "ordered_rows_and_labels_sha256": "8ad845446c5b9affbb65d3f9f0d92b96a21ff909f14339bbe44c05f618824f36",
+          "pre_filter_rows": 170,
+          "removed_invalid_or_over_96": 2
+        },
+        "train": {
+          "effective_rows": 777,
+          "membership_sha256": "9496d4f3aa89b11d513e4b7e7f50f461024ac5d6f190873e499f34474c8c010b",
+          "ordered_rows_and_labels_sha256": "31cf156bfa24a979ba40ea6abb2b7f4828aa79dc4c97e6cb5a02b9c639f23dff",
+          "pre_filter_rows": 791,
+          "removed_invalid_or_over_96": 14
+        },
+        "valid": {
+          "effective_rows": 167,
+          "membership_sha256": "2f7db5fd9e6eddf9f723e18aa6ceddf7aa546b1fd84b5615592b27ae66f27abd",
+          "ordered_rows_and_labels_sha256": "3e7ed6784a96edb1a02fea050dc35b3525c0d2f3ded4d47fbf21f6ab858c4cff",
+          "pre_filter_rows": 169,
+          "removed_invalid_or_over_96": 2
+        }
+      },
+      "source_sha256": "402da0e0aa4fafe85edbf250b3f63ce139dc128385c21f6d518c9daf599228dc"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: anonymous-review-openadmet-chemprop-
+  labels:
+    app: openadmet-chemprop-baseline
+    review/user: anonymous-review
+    kueue.x-k8s.io/queue-name: REVIEW_QUEUE
+    kueue.x-k8s.io/priority-class: batch-workload-priority
+spec:
+  completionMode: Indexed
+  completions: 8
+  parallelism: 1
+  backoffLimit: 16
+  ttlSecondsAfterFinished: 604800
+  template:
+    metadata:
+      labels: {app: openadmet-chemprop-baseline, review/user: anonymous-review}
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-H200
+      containers:
+        - name: chemprop
+          image: python:3.11-slim
+          command: ["/bin/bash", "-c"]
+          args: ["sed 's/\\r$//' /workspace/chemrasayan/run_openadmet_chemprop_baseline.sh | bash -s"]
+          env:
+            - name: SHARD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+            - {name: NUM_SHARDS, value: "8"}
+          resources:
+            requests: {cpu: "8", memory: 32Gi, nvidia.com/gpu: "1"}
+            limits: {cpu: "8", memory: 32Gi, nvidia.com/gpu: "1"}
+          volumeMounts:
+            - {name: nfs, mountPath: /workspace/chemrasayan, readOnly: true}
+            - {name: ws, mountPath: /mnt}
+            - {name: dshm, mountPath: /dev/shm}
+      volumes:
+        - name: nfs
+          nfs: {server: NFS_SERVER_PLACEHOLDER, path: /EXTERNAL_NFS_PATH, readOnly: true}
+        - name: ws
+          persistentVolumeClaim: {claimName: WORKSPACE_PVC}
+        - name: dshm
+          emptyDir: {medium: Memory, sizeLimit: 8Gi}

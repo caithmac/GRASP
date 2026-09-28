@@ -1,0 +1,96 @@
+# @package _global_
+# MolE-MLM: radius-0 input → radius-2 target prediction.
+# Ablation baseline: same architecture + data as RTD runs, different objective.
+# vocab_size_target set at runtime via run_mlm_train.sh (size of r2 vocab pkl).
+
+name_sufix: pretrain_mlm_r2
+submit_job: True
+keep_configs: False
+checkpoint_path: null
+
+logger:
+  _target_: pytorch_lightning.loggers.CSVLogger
+  save_dir: /mnt/logs
+  name: mole_mlm_r2
+
+model:
+  name: mole_pretrain_mlm_r2
+
+  data:
+    trainer:
+      _target_: pytorch_lightning.Trainer
+      accelerator: gpu
+      devices: -1
+      strategy: ddp_find_unused_parameters_true
+      precision: 16
+      max_steps: 1000000
+      log_every_n_steps: 100
+      num_sanity_val_steps: 0
+      gradient_clip_val: 1.0
+      val_check_interval: 10000
+      limit_val_batches: 0
+      use_distributed_sampler: false
+      benchmark: true
+      callbacks:
+        - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+          dirpath: /mnt/checkpoints/mlm_r2
+          every_n_train_steps: 20000
+          save_top_k: -1
+          save_last: true
+          mode: min
+          monitor: null
+          filename: "mole_mlm_r2-{step}"
+          verbose: true
+          save_weights_only: true
+        - _target_: pytorch_lightning.callbacks.TQDMProgressBar
+          refresh_rate: 50
+      plugins:
+        _target_: lightning_fabric.plugins.environments.TorchElasticEnvironment
+
+  hyperparameters:
+    datamodule:
+      _target_: mole.training.data.pretrain_datasets.MolMLMDataModule
+      data: /mnt/data/zinc_mlm/
+      parquet_data: /mnt/data/zinc_curated/
+      r2_vocab_path: /mnt/data/zinc_mlm/r2_vocab.pkl
+      vocabulary_inp: vocabulary_207atomenvs_radius0_ZINC_guacamole.pkl
+      mask_prob: 0.15
+      batch_size: 128
+      num_workers: 16
+      max_atoms: 96
+
+    pl_module:
+      _target_: mole.training.models.pretrain.MolEMLMPreTrain
+      checkpoint_path: ${checkpoint_path}
+
+      model:
+        _target_: mole.training.models.pretrain.MolEMLMModel
+        vocab_size_inp: null       # set at runtime from r0 vocab size
+        vocab_size_target: null    # set at runtime from r2 vocab pkl
+        mask_token_id: null        # set at runtime
+
+        disc_deberta_config:
+          embedding_size: 768
+          hidden_size: 768
+          intermediate_size: 3072
+          num_hidden_layers: 12
+          num_attention_heads: 12
+          attention_head_size: 64
+          hidden_act: gelu
+          max_position_embeddings: 512
+          relative_attention: true
+
+      optimizer:
+        _target_: torch.optim.AdamW
+        _partial_: true
+        lr: 1.0e-4
+        weight_decay: 0.01
+
+      lr_scheduler:
+        _target_: mole.training.utils.schedulers.get_cosine_schedule_with_warmup
+        _partial_: true
+        num_warmup_steps: 10000
+        num_training_steps: 1000000
+
+      metrics:
+        _target_: mole.training.utils.metrics.MetricsDict

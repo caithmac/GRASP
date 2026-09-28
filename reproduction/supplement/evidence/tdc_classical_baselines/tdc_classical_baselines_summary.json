@@ -1,0 +1,359 @@
+{
+  "endpoint_count": 23,
+  "endpoint_is_inference_unit": true,
+  "limitations": [
+    "The two representations share ExtraTrees but are separately tuned on validation data.",
+    "Three forest seeds quantify algorithmic randomness on one fixed scaffold partition; they are not independent data splits.",
+    "No heterogeneous task metrics are numerically averaged; across-task comparisons use endpoint directions."
+  ],
+  "optional_comparator": {
+    "ecfp4": {
+      "baseline_losses": 14,
+      "baseline_wins": 8,
+      "details": [
+        {
+          "baseline": 0.8860857296425692,
+          "baseline_outcome": "win",
+          "comparator": 0.8140172892591598,
+          "metric": "auroc",
+          "task": "bbb_martins"
+        },
+        {
+          "baseline": 0.7363184079601991,
+          "baseline_outcome": "win",
+          "comparator": 0.6700623864802968,
+          "metric": "auroc",
+          "task": "clintox"
+        },
+        {
+          "baseline": 0.9171993911719939,
+          "baseline_outcome": "loss",
+          "comparator": 0.9257229832572298,
+          "metric": "auroc",
+          "task": "hia_hou"
+        },
+        {
+          "baseline": 0.7203382523148143,
+          "baseline_outcome": "loss",
+          "comparator": 0.4739771286646525,
+          "metric": "mae",
+          "task": "lipophilicity_astrazeneca"
+        },
+        {
+          "baseline": 0.8169950738916256,
+          "baseline_outcome": "win",
+          "comparator": 0.7723316912972086,
+          "metric": "auroc",
+          "task": "herg"
+        },
+        {
+          "baseline": 0.8425947839806951,
+          "baseline_outcome": "win",
+          "comparator": 0.8030361037635156,
+          "metric": "auroc",
+          "task": "ames"
+        },
+        {
+          "baseline": 0.8791806020066889,
+          "baseline_outcome": "loss",
+          "comparator": 0.883221850613155,
+          "metric": "auroc",
+          "task": "dili"
+        },
+        {
+          "baseline": 0.6472587719298245,
+          "baseline_outcome": "loss",
+          "comparator": 0.6903508771929824,
+          "metric": "auroc",
+          "task": "bioavailability_ma"
+        },
+        {
+          "baseline": 0.427108373366938,
+          "baseline_outcome": "win",
+          "comparator": 0.450410137573878,
+          "metric": "mae",
+          "task": "caco2_wang"
+        },
+        {
+          "baseline": 0.8904320987654321,
+          "baseline_outcome": "loss",
+          "comparator": 0.9180880441845355,
+          "metric": "auroc",
+          "task": "pgp_broccatelli"
+        },
+        {
+          "baseline": 1.3644256755642266,
+          "baseline_outcome": "loss",
+          "comparator": 0.841219961643219,
+          "metric": "mae",
+          "task": "solubility_aqsoldb"
+        },
+        {
+          "baseline": 10.770910567951246,
+          "baseline_outcome": "loss",
+          "comparator": 7.316797733306885,
+          "metric": "mae",
+          "task": "ppbr_az"
+        },
+        {
+          "baseline": 0.4985376297269406,
+          "baseline_outcome": "loss",
+          "comparator": 0.5304255066207123,
+          "metric": "spearman",
+          "task": "vdss_lombardo"
+        },
+        {
+          "baseline": 0.7230673816640762,
+          "baseline_outcome": "loss",
+          "comparator": 0.7669672214421143,
+          "metric": "auprc",
+          "task": "cyp2c9_veith"
+        },
+        {
+          "baseline": 0.6787277179117996,
+          "baseline_outcome": "loss",
+          "comparator": 0.6849909060092639,
+          "metric": "auprc",
+          "task": "cyp2d6_veith"
+        },
+        {
+          "baseline": 0.8319733259663659,
+          "baseline_outcome": "loss",
+          "comparator": 0.8673925846218284,
+          "metric": "auprc",
+          "task": "cyp3a4_veith"
+        },
+        {
+          "baseline": 0.40387309903739627,
+          "baseline_outcome": "loss",
+          "comparator": 0.41288865187022333,
+          "metric": "auprc",
+          "task": "cyp2c9_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.5968271582242822,
+          "baseline_outcome": "win",
+          "comparator": 0.41090493453497084,
+          "metric": "auprc",
+          "task": "cyp2d6_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.6746156878202602,
+          "baseline_outcome": "tie",
+          "comparator": 0.6746156878202602,
+          "metric": "auroc",
+          "task": "cyp3a4_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.32532681287214094,
+          "baseline_outcome": "loss",
+          "comparator": 0.4883154509786844,
+          "metric": "spearman",
+          "task": "half_life_obach"
+        },
+        {
+          "baseline": 0.5259434086570504,
+          "baseline_outcome": "win",
+          "comparator": 0.43591026316430687,
+          "metric": "spearman",
+          "task": "clearance_microsome_az"
+        },
+        {
+          "baseline": 0.398023459552046,
+          "baseline_outcome": "loss",
+          "comparator": 0.4178724622671944,
+          "metric": "spearman",
+          "task": "clearance_hepatocyte_az"
+        },
+        {
+          "baseline": 0.5251661009727074,
+          "baseline_outcome": "win",
+          "comparator": 0.5529319842656454,
+          "metric": "mae",
+          "task": "ld50_zhu"
+        }
+      ],
+      "exact_two_sided_sign_p": 0.28627872467041016,
+      "inference_unit": "endpoint",
+      "ties": 1
+    },
+    "rdkit_descriptors": {
+      "baseline_losses": 8,
+      "baseline_wins": 15,
+      "details": [
+        {
+          "baseline": 0.9051442264624204,
+          "baseline_outcome": "win",
+          "comparator": 0.8140172892591598,
+          "metric": "auroc",
+          "task": "bbb_martins"
+        },
+        {
+          "baseline": 0.7984679775724551,
+          "baseline_outcome": "win",
+          "comparator": 0.6700623864802968,
+          "metric": "auroc",
+          "task": "clintox"
+        },
+        {
+          "baseline": 0.9482496194824962,
+          "baseline_outcome": "win",
+          "comparator": 0.9257229832572298,
+          "metric": "auroc",
+          "task": "hia_hou"
+        },
+        {
+          "baseline": 0.588087883563437,
+          "baseline_outcome": "loss",
+          "comparator": 0.4739771286646525,
+          "metric": "mae",
+          "task": "lipophilicity_astrazeneca"
+        },
+        {
+          "baseline": 0.8305418719211822,
+          "baseline_outcome": "win",
+          "comparator": 0.7723316912972086,
+          "metric": "auroc",
+          "task": "herg"
+        },
+        {
+          "baseline": 0.848486008631491,
+          "baseline_outcome": "win",
+          "comparator": 0.8030361037635156,
+          "metric": "auroc",
+          "task": "ames"
+        },
+        {
+          "baseline": 0.9053790412486064,
+          "baseline_outcome": "win",
+          "comparator": 0.883221850613155,
+          "metric": "auroc",
+          "task": "dili"
+        },
+        {
+          "baseline": 0.6968201754385964,
+          "baseline_outcome": "win",
+          "comparator": 0.6903508771929824,
+          "metric": "auroc",
+          "task": "bioavailability_ma"
+        },
+        {
+          "baseline": 0.3134667306744933,
+          "baseline_outcome": "win",
+          "comparator": 0.450410137573878,
+          "metric": "mae",
+          "task": "caco2_wang"
+        },
+        {
+          "baseline": 0.9518559129304743,
+          "baseline_outcome": "win",
+          "comparator": 0.9180880441845355,
+          "metric": "auroc",
+          "task": "pgp_broccatelli"
+        },
+        {
+          "baseline": 0.8923032496590074,
+          "baseline_outcome": "loss",
+          "comparator": 0.841219961643219,
+          "metric": "mae",
+          "task": "solubility_aqsoldb"
+        },
+        {
+          "baseline": 8.327049759587908,
+          "baseline_outcome": "loss",
+          "comparator": 7.316797733306885,
+          "metric": "mae",
+          "task": "ppbr_az"
+        },
+        {
+          "baseline": 0.5872304673326406,
+          "baseline_outcome": "win",
+          "comparator": 0.5304255066207123,
+          "metric": "spearman",
+          "task": "vdss_lombardo"
+        },
+        {
+          "baseline": 0.7595714189385446,
+          "baseline_outcome": "loss",
+          "comparator": 0.7669672214421143,
+          "metric": "auprc",
+          "task": "cyp2c9_veith"
+        },
+        {
+          "baseline": 0.6784096007843217,
+          "baseline_outcome": "loss",
+          "comparator": 0.6849909060092639,
+          "metric": "auprc",
+          "task": "cyp2d6_veith"
+        },
+        {
+          "baseline": 0.8469234607986804,
+          "baseline_outcome": "loss",
+          "comparator": 0.8673925846218284,
+          "metric": "auprc",
+          "task": "cyp3a4_veith"
+        },
+        {
+          "baseline": 0.39338622422268665,
+          "baseline_outcome": "loss",
+          "comparator": 0.41288865187022333,
+          "metric": "auprc",
+          "task": "cyp2c9_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.6140472712970814,
+          "baseline_outcome": "win",
+          "comparator": 0.41090493453497084,
+          "metric": "auprc",
+          "task": "cyp2d6_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.7366311916962291,
+          "baseline_outcome": "win",
+          "comparator": 0.6746156878202602,
+          "metric": "auroc",
+          "task": "cyp3a4_substrate_carbonmangels"
+        },
+        {
+          "baseline": 0.4063784285172464,
+          "baseline_outcome": "loss",
+          "comparator": 0.4883154509786844,
+          "metric": "spearman",
+          "task": "half_life_obach"
+        },
+        {
+          "baseline": 0.5564186024245602,
+          "baseline_outcome": "win",
+          "comparator": 0.43591026316430687,
+          "metric": "spearman",
+          "task": "clearance_microsome_az"
+        },
+        {
+          "baseline": 0.44026125397066945,
+          "baseline_outcome": "win",
+          "comparator": 0.4178724622671944,
+          "metric": "spearman",
+          "task": "clearance_hepatocyte_az"
+        },
+        {
+          "baseline": 0.505346286968678,
+          "baseline_outcome": "win",
+          "comparator": 0.5529319842656454,
+          "metric": "mae",
+          "task": "ld50_zhu"
+        }
+      ],
+      "exact_two_sided_sign_p": 0.21003961563110352,
+      "inference_unit": "endpoint",
+      "ties": 0
+    }
+  },
+  "representation_comparison": {
+    "ecfp4_wins": 2,
+    "exact_two_sided_sign_p": 6.604194641113281e-05,
+    "rdkit_descriptors_wins": 21,
+    "ties": 0
+  },
+  "schema_version": 1,
+  "status": "PASS"
+}

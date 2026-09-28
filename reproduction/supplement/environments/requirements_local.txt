@@ -1,0 +1,29 @@
+# Local (CPU) requirements — for syntax/logic testing only, not full training
+# Install order matters: torch first, then PyG, then the rest.
+#
+# Step 1:
+#   pip install torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
+#
+# Step 2:
+#   pip install torch_geometric
+#   pip install torch_scatter torch_sparse torch_cluster torch_spline_conv \
+#       -f https://data.pyg.org/whl/torch-2.1.0+cpu.html
+#
+# Step 3:
+#   pip install -r requirements_local.txt
+
+pytorch-lightning>=2.0
+torchmetrics
+rdkit
+scipy
+numpy
+pandas
+pyarrow
+hydra-core>=1.2
+omegaconf
+numexpr
+tqdm
+packaging
+ujson
+sentencepiece
+PyTDC

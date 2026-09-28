@@ -1,0 +1,133 @@
+# @package _global_
+# Exposure-correct continuation of the 1.5B-data RTD-25% p3 checkpoint.
+# The positional fields explicitly preserve the architecture actually trained.
+
+name_sufix: pretrain_rtd_25pct_phase4
+submit_job: true
+keep_configs: false
+checkpoint_path: null
+
+logger:
+  _target_: pytorch_lightning.loggers.CSVLogger
+  save_dir: /mnt/logs
+  name: mole_rtd_25pct_1.5b_phase4
+
+model:
+  name: mole_pretrain_rtd_25pct_1.5b_phase4
+  data:
+    trainer:
+      _target_: pytorch_lightning.Trainer
+      accelerator: gpu
+      devices: 4
+      strategy: ddp_find_unused_parameters_true
+      precision: 16
+      max_steps: 3140625
+      accumulate_grad_batches: 2
+      log_every_n_steps: 100
+      num_sanity_val_steps: 2
+      gradient_clip_val: 1.0
+      val_check_interval: 250000
+      limit_val_batches: 200
+      use_distributed_sampler: false
+      benchmark: true
+      callbacks:
+        # Rolling full state: real optimizer/scheduler recovery every 10K.
+        - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+          dirpath: /mnt/checkpoints/rtd_25pct_1.5b_phase4/resume
+          every_n_train_steps: 10000
+          save_top_k: 0
+          save_last: true
+          monitor: null
+          filename: "phase4-resume-{step}"
+          verbose: true
+          save_weights_only: false
+        # Weights-only learning-curve milestones.
+        - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+          dirpath: /mnt/checkpoints/rtd_25pct_1.5b_phase4/milestones
+          every_n_train_steps: 250000
+          save_top_k: -1
+          save_last: false
+          monitor: null
+          filename: "phase4-{step}"
+          verbose: true
+          save_weights_only: true
+        # Validation selection only; never select from TDC test scores.
+        - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+          dirpath: /mnt/checkpoints/rtd_25pct_1.5b_phase4/best
+          save_top_k: 2
+          save_last: false
+          mode: min
+          monitor: val_mean_loss
+          filename: "phase4-{step}-{val_mean_loss:.5f}"
+          verbose: true
+          save_weights_only: true
+        - _target_: pytorch_lightning.callbacks.TQDMProgressBar
+          refresh_rate: 50
+      plugins:
+        _target_: lightning_fabric.plugins.environments.TorchElasticEnvironment
+
+  hyperparameters:
+    random_seed: 42
+    datamodule:
+      _target_: mole.training.data.pretrain_datasets.MolPreTrainDataModule
+      data: /mnt/data/zinc20_1.5b
+      vocabulary_inp: vocabulary_207atomenvs_radius0_ZINC_guacamole.pkl
+      mask_prob: 0.25
+      batch_size: 32
+      num_workers: 4
+      val_num_workers: 0
+      max_atoms: 96
+
+    pl_module:
+      _target_: mole.training.models.pretrain.MolEPreTrain
+      checkpoint_path: ${checkpoint_path}
+      model:
+        _target_: mole.training.models.pretrain.MolERTDModel
+        vocab_size_inp: null
+        mask_token_id: null
+        rtd_lambda: 50.0
+        embedding_sharing: gdes
+        gen_deberta_config:
+          embedding_size: 768
+          hidden_size: 256
+          intermediate_size: 1024
+          num_hidden_layers: 3
+          num_attention_heads: 4
+          attention_head_size: 64
+          hidden_act: gelu
+          max_position_embeddings: 512
+          max_relative_positions: -1
+          position_buckets: -1
+          norm_rel_ebd: none
+          pos_att_type: c2p
+          position_biased_input: true
+          relative_attention: true
+          share_att_key: false
+        disc_deberta_config:
+          embedding_size: 768
+          hidden_size: 768
+          intermediate_size: 3072
+          num_hidden_layers: 12
+          num_attention_heads: 12
+          attention_head_size: 64
+          hidden_act: gelu
+          max_position_embeddings: 512
+          max_relative_positions: -1
+          position_buckets: -1
+          norm_rel_ebd: none
+          pos_att_type: c2p
+          position_biased_input: true
+          relative_attention: true
+          share_att_key: false
+      optimizer:
+        _target_: torch.optim.AdamW
+        _partial_: true
+        lr: 5.0e-5
+        weight_decay: 0.01
+      lr_scheduler:
+        _target_: mole.training.utils.schedulers.get_cosine_schedule_with_warmup
+        _partial_: true
+        num_warmup_steps: 10000
+        num_training_steps: 3140625
+      metrics:
+        _target_: mole.training.utils.metrics.MetricsDict

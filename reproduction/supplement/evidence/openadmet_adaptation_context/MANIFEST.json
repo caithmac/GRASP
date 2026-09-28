@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "bytes": 23770,
+      "path": "cell_summary.csv",
+      "sha256": "90a9f6ef5abb14e7c37f2b730e4b6441c2d79b0f5e56105f2aa36dfb16194fc3"
+    },
+    {
+      "bytes": 10823,
+      "path": "endpoint_summary.csv",
+      "sha256": "5a964699efe2fd3bbce50052d9424f452d671a11bae076a2f332890db0ac070b"
+    },
+    {
+      "bytes": 1747,
+      "path": "associations.csv",
+      "sha256": "83698df747c722e9cde52f2d6e214d9f03068b1e2fb95bc0ef904110edc92942"
+    },
+    {
+      "bytes": 50916,
+      "path": "summary.json",
+      "sha256": "5b320b5720f16f26f50f65614a6cb6a2c206ce657c6317e72665ba700c33ac8a"
+    },
+    {
+      "bytes": 912,
+      "path": "RESULTS.md",
+      "sha256": "2e833d99563078aa5530b586a62acb7401a60a79a62a48fb6bbeb4a8da2886cb"
+    }
+  ],
+  "schema_version": 1
+}

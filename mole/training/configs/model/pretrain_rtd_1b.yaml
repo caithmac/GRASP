@@ -1,0 +1,15 @@
+# @package _global_
+# Extension of pretrain_rtd_sharded for longer runs if needed.
+# Supervisor guidance: 1 epoch over ~435M molecules (~850k steps at batch 512) is optimal.
+# Use pretrain_rtd_sharded directly unless explicitly extending beyond 1M steps.
+
+defaults:
+  - pretrain_rtd_sharded
+
+name_sufix: pretrain_rtd_1b
+
+model:
+  data:
+    trainer:
+      max_steps: 1000000
+      val_check_interval: 10000

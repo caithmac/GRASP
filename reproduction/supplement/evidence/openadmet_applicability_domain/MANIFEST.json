@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "bytes": 1225833,
+      "path": "test_row_applicability.csv",
+      "sha256": "8e8bf6048a2293ac0be90a19fba6d5fc2e89dccd6805c799603d56332b5481b9"
+    },
+    {
+      "bytes": 24924,
+      "path": "endpoint_split_summary.csv",
+      "sha256": "2a4ed84f762f9c5811cc43421c7b2ef3506c9ff230f7c7278eba4df9903f155c"
+    },
+    {
+      "bytes": 20834,
+      "path": "summary.json",
+      "sha256": "4da43178c40691e0adbdc4aef7f0bd32cf00282283a5b57a207ab636dcf16385"
+    },
+    {
+      "bytes": 803,
+      "path": "RESULTS.md",
+      "sha256": "96cb3237f19808381a697a00e04c18131690ded13f6de90567e11db59fc2d27d"
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,9 @@
+step,checkpoint,n_tasks,mean_rank,median_rank,task_wins_including_exact_ties
+10000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_010000.pt,23,4.6521739130434785,4.0,2
+20000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_020000.pt,23,4.434782608695652,5.0,4
+30000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_030000.pt,23,4.260869565217392,4.0,2
+40000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_040000.pt,23,4.173913043478261,3.0,3
+50000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_050000.pt,23,4.086956521739131,4.0,4
+60000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_060000.pt,23,5.043478260869565,5.0,2
+70000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_070000.pt,23,4.434782608695652,5.0,5
+80000,/mnt/checkpoints/sup_pretrain_rtd25_1.5b_p3_matched/encoder_step_080000.pt,23,4.913043478260869,5.0,1

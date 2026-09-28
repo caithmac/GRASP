@@ -1,0 +1,46 @@
+name: mole-rtd
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # PyTorch (CPU for local testing; GPU version installed on EIDF via Docker)
+  - pytorch::pytorch=2.1.0
+  - pytorch::cpuonly
+
+  # PyTorch Geometric
+  - pyg::pyg
+
+  # Scientific stack
+  - conda-forge::rdkit>=2023.3
+  - numpy
+  - scipy
+  - pandas
+  - pyarrow
+
+  # Training framework
+  - conda-forge::pytorch-lightning>=2.0
+  - conda-forge::torchmetrics
+
+  # Config
+  - conda-forge::hydra-core>=1.2
+  - conda-forge::omegaconf
+
+  # Utilities
+  - conda-forge::numexpr
+  - conda-forge::tqdm
+  - conda-forge::packaging
+  - conda-forge::ujson
+  - conda-forge::sentencepiece
+
+  - pip:
+    - PyTDC
+    - torch_scatter
+    - torch_sparse
+    - torch_cluster
+    - torch_spline_conv

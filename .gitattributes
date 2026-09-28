@@ -1,0 +1,6 @@
+# Preserve the bytewise-verified research supplement and model metadata.
+reproduction/supplement/** -text
+hf_model/config.json -text
+hf_model/vocab.json -text
+hf_model/SHA256SUMS -text
+hf_model/model.safetensors -text

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use GRASP, cite the arXiv preprint."
+title: "GRASP: Graph Representation Learning with Assay Supervision for Molecular Properties"
+type: software
+authors:
+  - family-names: Srivastava
+    given-names: Satya Pratik
+  - family-names: Gorantla
+    given-names: Rohan
+  - family-names: Chundru
+    given-names: Sharath Krishna
+  - family-names: Singh
+    given-names: Harshit
+  - family-names: Mey
+    given-names: Antonia S. J. S.
+  - family-names: Singh
+    given-names: Rajeev Kumar
+repository-code: https://github.com/caithmac/GRASP

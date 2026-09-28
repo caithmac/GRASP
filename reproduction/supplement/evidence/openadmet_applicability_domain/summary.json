@@ -1,0 +1,467 @@
+{
+  "cell_count": 69,
+  "cell_level": {
+    "finite_spearman_cells": 69,
+    "holm69_significant_cells": 4,
+    "negative_rho_cells": 56,
+    "positive_rho_cells": 13
+  },
+  "endpoint_count": 23,
+  "fingerprint": {
+    "bits": 2048,
+    "radius": 2,
+    "reference": "nearest molecule in the same endpoint and outer-split training set",
+    "similarity": "Tanimoto",
+    "type": "Morgan bit vector (ECFP4)"
+  },
+  "inputs": {
+    "endpoint_rows": {
+      "path": "results_package/results_openadmet_step2_leakage_audit_20260917_v3/endpoint_rows.csv.gz",
+      "sha256": "736199e260996f7157087945eb78f23815d7a447a3e85bb615e2bd12883f215f"
+    },
+    "full_mix_cells": [
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_hlm/cells/split1_full_mix.json",
+        "sha256": "2f2c8f82a100dad1eefb0d71a5d8c0195cf18414011010337e110d697a48f561"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_hlm/cells/split2_full_mix.json",
+        "sha256": "1326ecabb3774e8611ede3cdbae9cc0806b7aa2045588030119d75589378ace5"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_hlm/cells/split3_full_mix.json",
+        "sha256": "08857c0716c1d1b5ab12528217acc4926d023923ed3543450d35b75ae70d3c56"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_ksol/cells/split1_full_mix.json",
+        "sha256": "c4589456aff1839f6b0d07c1db4b3031d8055de518b0cfc4d271f3897ebf301f"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_ksol/cells/split2_full_mix.json",
+        "sha256": "76755f40226a378db2c42dd0de66dc9d6cdecc8a3e82875964230c62ada39de3"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_ksol/cells/split3_full_mix.json",
+        "sha256": "f2b5f747055fc652e55eb01e5ced2b4659e72ea428709c99746debf1b3017149"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_logd/cells/split1_full_mix.json",
+        "sha256": "2fd3c7b915243f10636aa04fef0d2766d621f18d9df6b72dcee277b5987479ec"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_logd/cells/split2_full_mix.json",
+        "sha256": "7bec5d3afa633f8db798606bd3fb3536ee6d323d691fcd0cf272ee4f1cd29ee8"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_logd/cells/split3_full_mix.json",
+        "sha256": "19bb98dee0edcb9be52376685abedc23905ec6818d63ce8cabdbbfcde72347b9"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mdr1/cells/split1_full_mix.json",
+        "sha256": "9ee7e1d0f6c104d6168b74dce9cc2495264e6c517f4e73a6d5b7d2a7de7742aa"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mdr1/cells/split2_full_mix.json",
+        "sha256": "1eb1abefd8c635175093c5b8d42b61bee51714785aa8d921a8f00ec14a1a38a4"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mdr1/cells/split3_full_mix.json",
+        "sha256": "cd33b0b6019638cccf721101b899db5c356cc1ca769fcdb592129c4728f7a001"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mers/cells/split1_full_mix.json",
+        "sha256": "64223ba752b318d9e1b02079abb250d52a60970e9dea4ae9d2f7c70e5effa64d"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mers/cells/split2_full_mix.json",
+        "sha256": "b968e60a09602d6334bd28cd52a35e37458c3ed48ce39cb377057a0b0e720cd8"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mers/cells/split3_full_mix.json",
+        "sha256": "3f7e4c915258af4d5473395c0d7d5c32112367bd44c36c914afacdc02f8dca43"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mlm/cells/split1_full_mix.json",
+        "sha256": "ac4c4ee73fa1e056780523157499ec43bdb78892b5521a90bec8710e2af9f740"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mlm/cells/split2_full_mix.json",
+        "sha256": "9b0e9aaca0fb44e20dd359b4cc663fbcb1d3091d18d1df22d72f11983a596269"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_mlm/cells/split3_full_mix.json",
+        "sha256": "f8b2996f1fb6ea0a988529d883864f2cd3fc4b11e49d8a7dc53d705f5b68904f"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_sars/cells/split1_full_mix.json",
+        "sha256": "bbda6c1ce8cad4d86a3fef468353a88edc638548ab8d7e701ed5de81181a9b07"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_sars/cells/split2_full_mix.json",
+        "sha256": "663e2764bcca5511577df57359277a909be07fa35cb4235d617010d414806a0e"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/asap_sars/cells/split3_full_mix.json",
+        "sha256": "5dfb5be2f4ff9e7e33051c39ae01b97af6521ae1c6b6f73c6f77139dc6fb62f6"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hlm/cells/split1_full_mix.json",
+        "sha256": "81d4b1a43ad63ce3f25103b61fc09e74622284ed1ba38b54db6a2c6da62ecb9b"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hlm/cells/split2_full_mix.json",
+        "sha256": "3b68217f18144ec1cf34fc72329292e7c6bf2b2d3015abd6b61bbcd3fb4db1d0"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hlm/cells/split3_full_mix.json",
+        "sha256": "2f9e4a5ab0ba48b80f889896c9b6c935d3890eb7aeb0dde3f88ca4bce28bce5a"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hppb/cells/split1_full_mix.json",
+        "sha256": "5b3559119f2b9f27a0cd6112752aed5b8e76cbd71666ddd57af7dab0d113abbb"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hppb/cells/split2_full_mix.json",
+        "sha256": "9650df29f3cca3b5391e9be66ec29efd0bd1bf9a894c84ea7f6a9818066e772d"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_hppb/cells/split3_full_mix.json",
+        "sha256": "452c89028dc6c0b69707bc7a4eedbf38bbc71db54b595c32f1008ac19133685f"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_mdr1/cells/split1_full_mix.json",
+        "sha256": "7d6fa8ab1ea9ee01dd6592c10d64adc1cd1bb82cd68f5e5612b7c5d9677f6a9d"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_mdr1/cells/split2_full_mix.json",
+        "sha256": "1359bc63e3a40b9d2135fd469ad5c108a4aad22cd3088a6b89903e16f26ebaeb"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_mdr1/cells/split3_full_mix.json",
+        "sha256": "bdec98a97068e213813d7f70e1de5f019b95c871700df97839ee2f7526b877ac"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rlm/cells/split1_full_mix.json",
+        "sha256": "04290b3e6bc9e2022f31e250c2f64ef718cf52690f9987f92933ded296fae1ea"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rlm/cells/split2_full_mix.json",
+        "sha256": "329d240772c812c408d5491ee7f409482f083e4c9f54696fd18b098ff8437456"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rlm/cells/split3_full_mix.json",
+        "sha256": "037b014561d862765a516cff980d8fa9186b50121ff0dab773a7414770e6ab16"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rppb/cells/split1_full_mix.json",
+        "sha256": "7c4944d75b6dd5e334e07f06e2354913ece9a11d17223225db57c20038749d3d"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rppb/cells/split2_full_mix.json",
+        "sha256": "35b632087912053fae7a689bdefe95122ec19e94e798521dfbd073c316fe869e"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_rppb/cells/split3_full_mix.json",
+        "sha256": "a7fa82d21e68c911d8e75a5de4b8dbee6200acf339082f34bc57766560879cf6"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_solubility/cells/split1_full_mix.json",
+        "sha256": "ebb1524d8d7ee086bfdd92191471b91e4e5132d5bd49e788a2d548dc2620c5d8"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_solubility/cells/split2_full_mix.json",
+        "sha256": "6c4f0c016c33b477dfd09586b3e1154b4d3680c1cdaf47437c829dc4a8307680"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/biogen_solubility/cells/split3_full_mix.json",
+        "sha256": "7bfeb392ca292055cd745a1f19bfe31357b376086cc1227a45d0bc83f4d87e16"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_efflux/cells/split1_full_mix.json",
+        "sha256": "67abe2e3bbbc8866b1aa2ac3b30d99d64248042b0e4e5bab2f88322290536cba"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_efflux/cells/split2_full_mix.json",
+        "sha256": "7e35cba381141bde951a91374c2ddc29b65de6c26770b69562371c75f8491a17"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_efflux/cells/split3_full_mix.json",
+        "sha256": "8d3a40a133609e567045db9a174da27a8959da046fc3cfcc0f54d55ef380c922"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_pappa/cells/split1_full_mix.json",
+        "sha256": "31d0399e187cd6e68250adccd613341e776a4d74bcddc9f3af7cd04879c97038"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_pappa/cells/split2_full_mix.json",
+        "sha256": "4d185dff22ee06df6696d730e0ae898b6af3c1441aefd102924980ddff7a6878"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_caco2_pappa/cells/split3_full_mix.json",
+        "sha256": "da1ebda6abffaf8b935c3c4736df7c4b44402a8de1ca8022d3f881e531787d9f"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_hlm/cells/split1_full_mix.json",
+        "sha256": "ec60f00cd9da04ad36ed77ab078cd411965ec0e7ece78ef6e6c28fb230bcbf12"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_hlm/cells/split2_full_mix.json",
+        "sha256": "1500bdbd96ecccf8e19c8aa71e36942b55b685a903c5f7e46a6eeeb3b4d0a654"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_hlm/cells/split3_full_mix.json",
+        "sha256": "125d4cae9b07d4329e11e7cdf08748a323ac31f450db6ad08b998a8259da87cb"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_ksol/cells/split1_full_mix.json",
+        "sha256": "71c04fcb2c8ddb5b0acac702645622adafae3ac596dbf5aa852accf77d3406b7"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_ksol/cells/split2_full_mix.json",
+        "sha256": "af1e222dabb93f595c01b8636f9942ad137abaa767de3b5a352b5cd5df1e4d91"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_ksol/cells/split3_full_mix.json",
+        "sha256": "348b6aca497b87b598da925147f4ab7e5d8ade3eac33a2022c511b35dfdba101"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_logd/cells/split1_full_mix.json",
+        "sha256": "e7b01ac980ef0dc0bfff42a0adf1f3240468a28c99da97ba31ec5ae6d2d0096c"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_logd/cells/split2_full_mix.json",
+        "sha256": "ed2333a9dc4925deb9e1ace0551efd8f1731536592ad099770c3d74c15aafad6"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_logd/cells/split3_full_mix.json",
+        "sha256": "dfe49ae57c7c92ad9ac2cd840d0a7d35df97b2380629427ce067f2234b00de2a"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mbpb/cells/split1_full_mix.json",
+        "sha256": "aa17467c66b5bf2d74ea9ee7494662a48f4a36e1ef5430ebd9ad43bc3a15ac86"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mbpb/cells/split2_full_mix.json",
+        "sha256": "bf016ee353b70d8a55b7f0f53c64e52b74e2ae98cf4f0e685bd03550ba4cd8cf"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mbpb/cells/split3_full_mix.json",
+        "sha256": "2ef96915cedff75768a3728bdeb2308a1fe6bfc921b3ab67310d71454731c5b8"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mgmb/cells/split1_full_mix.json",
+        "sha256": "4703954661c567672a6a616860471bf553649ee5faaff868d7dd7e596b452c7d"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mgmb/cells/split2_full_mix.json",
+        "sha256": "376a55a99eece48a39921b030afdd95feba3d1bc2d593b6a4ac3ba159af3a8f0"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mgmb/cells/split3_full_mix.json",
+        "sha256": "3490054eaea8327aa47e9ff0fd6acb0ac0ad4dbdca83d735ba7c5a47d4ab8783"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mlm/cells/split1_full_mix.json",
+        "sha256": "185a26547257e39a6f2873f475af5bf975bf0b306b24d57da2367bbf7ab025a3"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mlm/cells/split2_full_mix.json",
+        "sha256": "4bc26a458dc18b7fd60c947c47d890806773835ea4d1e827a46ee7668d45dbd7"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mlm/cells/split3_full_mix.json",
+        "sha256": "427a4dbb0dc2916b099ad5e8287c4d5858b0d1e820c14b155eda120a3e681de8"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mppb/cells/split1_full_mix.json",
+        "sha256": "0076a4d73de38aa3909146e833a07f0e34b9228b4c0126bbf84f33721e655e0b"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mppb/cells/split2_full_mix.json",
+        "sha256": "407ec242382d2174cb608f7ec7682e001207ae226f00b88755f53989e2040caa"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/expansion_mppb/cells/split3_full_mix.json",
+        "sha256": "0ed256137fb90e8e6d0fb2f9e7ee6f13ebefbaa0ab578af0aa9b2c8326a9e9bf"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/pxr/cells/split1_full_mix.json",
+        "sha256": "6ee705516ef7722a32e957ef4c3aac865568c22ac6f03bb5175b054f1b6d996f"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/pxr/cells/split2_full_mix.json",
+        "sha256": "a342a5555f669ed4ab16d58976637f9409d748d66f50c1eb1cde7581a26db5cd"
+      },
+      {
+        "path": "results_rtd_phase4_95m_moljepa/pxr/cells/split3_full_mix.json",
+        "sha256": "54bbcc7bf1944a208b841b7667e9d62dca39de4265dbde2a6dd60e42bc96ca89"
+      }
+    ]
+  },
+  "interpretation_boundary": "Associations are descriptive and do not establish calibrated uncertainty, causal domain-shift effects, or pretraining-corpus applicability.",
+  "schema_version": 1,
+  "scope": "exploratory same-endpoint, same-split applicability-domain audit",
+  "similarity_vs_absolute_error": {
+    "bootstrap_95_interval": [
+      -0.15059676893968177,
+      -0.06658468908573015
+    ],
+    "bootstrap_replicates": 100000,
+    "bootstrap_seed": 20260918,
+    "endpoint_count": 23,
+    "endpoint_values": {
+      "asap_hlm": 0.15705305430876687,
+      "asap_ksol": -0.1418533487492637,
+      "asap_logd": -0.23702406151525687,
+      "asap_mdr1": 0.02882210926472496,
+      "asap_mers": -0.07964412492482319,
+      "asap_mlm": -0.07171416828250686,
+      "asap_sars": -0.2742553326087047,
+      "biogen_hlm": -0.19052227702642077,
+      "biogen_hppb": -0.2041651294125134,
+      "biogen_mdr1": -0.020994890350530412,
+      "biogen_rlm": -0.04468640439853452,
+      "biogen_rppb": -0.2864979356433135,
+      "biogen_solubility": -0.13840156602959972,
+      "expansion_caco2_efflux": -0.049367445877227585,
+      "expansion_caco2_pappa": -0.03291095659212234,
+      "expansion_hlm": -0.08504747031318628,
+      "expansion_ksol": -0.048100972287248876,
+      "expansion_logd": -0.15961932338303822,
+      "expansion_mbpb": -0.1414255752231562,
+      "expansion_mgmb": -0.22182466284755545,
+      "expansion_mlm": -0.17147474224176693,
+      "expansion_mppb": -0.1033731100371651,
+      "pxr": 0.002621039915137751
+    },
+    "exact_two_sided_sign_p": 0.00048828125,
+    "mean": -0.1093220562719698,
+    "median": -0.1033731100371651,
+    "negative_endpoints": 20,
+    "positive_endpoints": 3,
+    "zero_endpoints": 0
+  },
+  "software": {
+    "numpy": "1.26.4",
+    "python": "3.10.20",
+    "rdkit": "2025.03.6",
+    "scipy": "1.15.3"
+  },
+  "status": "PASS",
+  "test_prediction_rows_including_split_repetitions": 12021,
+  "threshold_sensitivity": {
+    "0.3": {
+      "definition": "(MAE below threshold - MAE at/above threshold) / overall cell MAE; positive values mean lower-similarity test rows have larger error",
+      "eligible_cell_count": 23,
+      "endpoint_bootstrap": {
+        "bootstrap_95_interval": [
+          0.2399870216058479,
+          0.4851249387735192
+        ],
+        "bootstrap_replicates": 100000,
+        "bootstrap_seed": 20260918,
+        "endpoint_count": 9,
+        "endpoint_values": {
+          "asap_mdr1": 0.26944297392052907,
+          "biogen_hlm": 0.2748995528979252,
+          "biogen_hppb": 0.3032398629049409,
+          "biogen_mdr1": 0.4036821885744531,
+          "biogen_rlm": 0.2751447792494683,
+          "biogen_rppb": 0.21551813398734465,
+          "biogen_solubility": 0.4034395429121422,
+          "expansion_mlm": 0.8317982578532023,
+          "pxr": 0.11823984213328996
+        },
+        "exact_two_sided_sign_p": 0.00390625,
+        "mean": 0.3439339038259217,
+        "median": 0.2751447792494683,
+        "negative_endpoints": 0,
+        "positive_endpoints": 9,
+        "zero_endpoints": 0
+      },
+      "minimum_rows_per_side_per_cell": 5
+    },
+    "0.5": {
+      "definition": "(MAE below threshold - MAE at/above threshold) / overall cell MAE; positive values mean lower-similarity test rows have larger error",
+      "eligible_cell_count": 56,
+      "endpoint_bootstrap": {
+        "bootstrap_95_interval": [
+          0.06577670154523885,
+          0.4107026191839294
+        ],
+        "bootstrap_replicates": 100000,
+        "bootstrap_seed": 20260918,
+        "endpoint_count": 22,
+        "endpoint_values": {
+          "asap_hlm": -0.7270340195230716,
+          "asap_logd": 0.49027083422273465,
+          "asap_mdr1": -0.17351617026224106,
+          "asap_mers": 0.009201417136736278,
+          "asap_mlm": -0.020278890529756288,
+          "asap_sars": 1.241615884375761,
+          "biogen_hlm": 0.24150912013370385,
+          "biogen_hppb": 0.6707558684183814,
+          "biogen_mdr1": -0.2166495796153273,
+          "biogen_rlm": 0.01783611101346542,
+          "biogen_rppb": 0.44466893753674447,
+          "biogen_solubility": -0.024832495775181856,
+          "expansion_caco2_efflux": 0.20933262594387694,
+          "expansion_caco2_pappa": 0.0003135969275152306,
+          "expansion_hlm": 0.5768596807824432,
+          "expansion_ksol": -0.02081244413685433,
+          "expansion_logd": 0.8489623618725323,
+          "expansion_mbpb": 0.26649327754727903,
+          "expansion_mgmb": 0.4217001876012867,
+          "expansion_mlm": 0.673954623388881,
+          "expansion_mppb": 0.18038357329927981,
+          "pxr": 0.09020917070868743
+        },
+        "exact_two_sided_sign_p": 0.052478790283203125,
+        "mean": 0.23640653050303986,
+        "median": 0.19485809962157838,
+        "negative_endpoints": 6,
+        "positive_endpoints": 16,
+        "zero_endpoints": 0
+      },
+      "minimum_rows_per_side_per_cell": 5
+    },
+    "0.7": {
+      "definition": "(MAE below threshold - MAE at/above threshold) / overall cell MAE; positive values mean lower-similarity test rows have larger error",
+      "eligible_cell_count": 47,
+      "endpoint_bootstrap": {
+        "bootstrap_95_interval": [
+          -0.015478280895017016,
+          0.20520316303568953
+        ],
+        "bootstrap_replicates": 100000,
+        "bootstrap_seed": 20260918,
+        "endpoint_count": 16,
+        "endpoint_values": {
+          "asap_hlm": -0.6963702667017128,
+          "asap_ksol": 0.14522388360707308,
+          "asap_logd": 0.1714411152958972,
+          "asap_mdr1": -0.030133030245420828,
+          "asap_mers": 0.3244131712009855,
+          "asap_mlm": 0.14638601224539774,
+          "asap_sars": 0.3164620043304022,
+          "expansion_caco2_efflux": 0.08294354451432172,
+          "expansion_caco2_pappa": 0.016659376742892928,
+          "expansion_hlm": 0.22992994029314784,
+          "expansion_ksol": 0.11200647584974466,
+          "expansion_logd": 0.28334842334100535,
+          "expansion_mbpb": 0.23379448446206422,
+          "expansion_mgmb": 0.15790544292723965,
+          "expansion_mlm": 0.2441535027344146,
+          "expansion_mppb": 0.08489896442019036
+        },
+        "exact_two_sided_sign_p": 0.004180908203125,
+        "mean": 0.11394144031360273,
+        "median": 0.1521457275863187,
+        "negative_endpoints": 2,
+        "positive_endpoints": 14,
+        "zero_endpoints": 0
+      },
+      "minimum_rows_per_side_per_cell": 5
+    }
+  }
+}

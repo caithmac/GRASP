@@ -1,0 +1,6 @@
+GRASP adapts the MolE molecular encoder released by Recursion Pharmaceuticals.
+The MolE source is distributed under CC BY-NC 4.0; its license is LICENSE and
+vendor/MOLE_LICENSE. The bundled DeBERTa implementation is distributed under
+the MIT license in vendor/DEBERTA_LICENSE. Source code implementing the paper's
+training and evaluation is retained in reproduction/supplement.
+

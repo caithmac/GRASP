@@ -1,0 +1,220 @@
+{
+  "analysis": {
+    "bootstrap": {
+      "interval": "two-sided percentile interval with linear-interpolated 2.5th and 97.5th percentiles",
+      "replicates": 100000,
+      "resampling": "23 endpoints with replacement; random.Random; generator reset to the recorded seed for each contrast",
+      "seed": 20260917
+    },
+    "contrasts": [
+      {
+        "bootstrap_95pct_ci": [
+          0.00015691830364390394,
+          0.024797916331080735
+        ],
+        "contrast": "frozen_objective_delta",
+        "definition": "endpoint mean frozen MLM MAE minus frozen RTD MAE; positive favors RTD",
+        "endpoints": 23,
+        "mean": 0.01218566782871238,
+        "median": 0.006866351298730922,
+        "negative": 7,
+        "positive": 16,
+        "sign_test": {
+          "definition": "exact Binomial(n, 0.5); doubled smaller tail; zero pairs omitted",
+          "n_nonzero": 23,
+          "negative_differences": 7,
+          "p_holm_3": 0.186279296875,
+          "p_two_sided_exact": 0.0931396484375,
+          "positive_differences": 16,
+          "zero_pairs": 0
+        },
+        "ties": 0,
+        "wilcoxon": {
+          "definition": "exact sign-randomization distribution; doubled smaller tail",
+          "n_nonzero": 23,
+          "p_holm_3": 0.09688186645507812,
+          "p_two_sided_exact": 0.04844093322753906,
+          "statistic": 73.0,
+          "w_minus": 73.0,
+          "w_plus": 203.0,
+          "zero_pairs": 0
+        }
+      },
+      {
+        "bootstrap_95pct_ci": [
+          -0.012246846415808577,
+          0.010908418609919259
+        ],
+        "contrast": "full_objective_delta",
+        "definition": "endpoint mean full-FT MLM MAE minus full-FT RTD MAE; positive favors RTD",
+        "endpoints": 23,
+        "mean": -0.00021135571837619792,
+        "median": 0.004186081129361918,
+        "negative": 9,
+        "positive": 14,
+        "sign_test": {
+          "definition": "exact Binomial(n, 0.5); doubled smaller tail; zero pairs omitted",
+          "n_nonzero": 23,
+          "negative_differences": 9,
+          "p_holm_3": 0.4048728942871094,
+          "p_two_sided_exact": 0.4048728942871094,
+          "positive_differences": 14,
+          "zero_pairs": 0
+        },
+        "ties": 0,
+        "wilcoxon": {
+          "definition": "exact sign-randomization distribution; doubled smaller tail",
+          "n_nonzero": 23,
+          "p_holm_3": 0.7539846897125244,
+          "p_two_sided_exact": 0.7539846897125244,
+          "statistic": 127.0,
+          "w_minus": 127.0,
+          "w_plus": 149.0,
+          "zero_pairs": 0
+        }
+      },
+      {
+        "bootstrap_95pct_ci": [
+          -0.02340571149872846,
+          -0.0007343993735777611
+        ],
+        "contrast": "full_minus_frozen_interaction",
+        "definition": "full objective delta minus frozen objective delta; positive means RTD's relative advantage is larger under full fine-tuning",
+        "endpoints": 23,
+        "mean": -0.01239702354708858,
+        "median": -0.01643068751268817,
+        "negative": 17,
+        "positive": 6,
+        "sign_test": {
+          "definition": "exact Binomial(n, 0.5); doubled smaller tail; zero pairs omitted",
+          "n_nonzero": 23,
+          "negative_differences": 17,
+          "p_holm_3": 0.10406899452209473,
+          "p_two_sided_exact": 0.03468966484069824,
+          "positive_differences": 6,
+          "zero_pairs": 0
+        },
+        "ties": 0,
+        "wilcoxon": {
+          "definition": "exact sign-randomization distribution; doubled smaller tail",
+          "n_nonzero": 23,
+          "p_holm_3": 0.0830225944519043,
+          "p_two_sided_exact": 0.027674198150634766,
+          "statistic": 66.0,
+          "w_minus": 210.0,
+          "w_plus": 66.0,
+          "zero_pairs": 0
+        }
+      }
+    ],
+    "endpoint_as_inferential_unit": true,
+    "multiplicity": {
+      "contrasts": [
+        "frozen_objective_delta",
+        "full_objective_delta",
+        "full_minus_frozen_interaction"
+      ],
+      "family_size": 3,
+      "sign_test_family": "separate Holm adjustment across the three exact paired sign tests",
+      "wilcoxon_family": "Holm adjustment across the three exact paired Wilcoxon tests"
+    }
+  },
+  "certifier_sha256": "5ac85ffd9aa94d58aa80fbb8a8dab7f5e41e76622576859e2807e9e58e73e2c8",
+  "checkpoint_sha256": {
+    "mlm_s2": "1160ecaea098f0500d5b6138203f7bd7c5852ef8b34d3d5cc908aeed57c04b86",
+    "rtd25_s2": "daa0d70f4a7ee44807192ccfe8735696cf26e3b6d10dc0a74bc877e586b34dba"
+  },
+  "checkpoint_tensor_audit": {
+    "global_relative_l2_delta": 1.31323295774603,
+    "maximum_absolute_tensor_delta": 4.058571815490723,
+    "mlm_canonical_tensor_sha256": "2b8520703f2a681da6ba136bdab2b5176e69e0e1ef7aa0c5dcead9f0c4726c34",
+    "mlm_file_sha256": "1160ecaea098f0500d5b6138203f7bd7c5852ef8b34d3d5cc908aeed57c04b86",
+    "parameter_tensors": 198,
+    "resolved_encoder_config": {
+      "attention_head_size": 64,
+      "attention_probs_dropout_prob": 0.1,
+      "embedding_size": 768,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 768,
+      "initializer_range": 0.02,
+      "intermediate_size": 3072,
+      "layer_norm_eps": 1e-07,
+      "max_position_embeddings": 0,
+      "max_relative_positions": 512,
+      "norm_rel_ebd": "layer_norm",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pos_att_type": "p2c|c2p",
+      "position_biased_input": false,
+      "position_buckets": 0,
+      "relative_attention": true,
+      "share_att_key": true,
+      "type_vocab_size": 0,
+      "vocab_size": 211
+    },
+    "rtd_canonical_tensor_sha256": "22daf0cb490337b160284e784ab8da925ae95d246442a76f771ddcc61049f552",
+    "rtd_file_sha256": "daa0d70f4a7ee44807192ccfe8735696cf26e3b6d10dc0a74bc877e586b34dba",
+    "schema_version": 1,
+    "tensors_differing": 198
+  },
+  "checkpoint_tensor_audit_sha256": "acb18b360012934792ebbfddaa7ec3785478af0e251eb25df37699be28a69e7e",
+  "checkpoint_verification_mode": "independently_recomputed",
+  "comparison": "paired primary-protocol MLM-S2 versus RTD-25%-S2 on 23 OpenADMET endpoints",
+  "endpoint_csv_sha256": "c4dd9915b0ee8c4ac698de44ea16797878c0cbf96d7e6047cdca2cc2047e67e0",
+  "endpoints": [
+    "expansion_caco2_pappa",
+    "expansion_caco2_efflux",
+    "expansion_logd",
+    "expansion_ksol",
+    "expansion_hlm",
+    "expansion_mlm",
+    "expansion_mbpb",
+    "expansion_mgmb",
+    "expansion_mppb",
+    "asap_mers",
+    "asap_sars",
+    "asap_logd",
+    "asap_ksol",
+    "asap_hlm",
+    "asap_mlm",
+    "asap_mdr1",
+    "pxr",
+    "biogen_solubility",
+    "biogen_hlm",
+    "biogen_rlm",
+    "biogen_hppb",
+    "biogen_rppb",
+    "biogen_mdr1"
+  ],
+  "methods": [
+    "frozen_mix",
+    "full_mix"
+  ],
+  "models": [
+    "mlm_s2",
+    "rtd25_s2"
+  ],
+  "reference_relevant_file_manifest_sha256": "fcfeb59b3542ce1d983e41abb8759e71c41d8987d92b9df8c449946fbe285a02",
+  "remote_archive_sha256": "9e8db8f5b9fcb5bf3eb214247a9e02a351a12410480e9d8a5c2466dfdf36769c",
+  "remote_run_attestation_sha256": "24a96d80d27978f542002a51486154bd3b75dddf341e66c5daa29041da35bcb2",
+  "schema_version": 1,
+  "source_hashes": {
+    "job_yaml_sha256": "3b9cd4e8dd6a25bd5dd3d7ebe3fe0488a501bdf0215f2744b78270fe58893737",
+    "runner_sha256": "f06ee510bce06284e4a71636da4401fb7310d793c5a964a61942423966d2f0bb",
+    "source_bundle_sha256": "61df33ed4bfbbbe0cd051954f3656a5761de9e15d519250c131d5bcd7c308310",
+    "wrapper_sha256": "ad8b8da24ba664a7ac026e31bcb44e8f443041411211e8f37898dee1a79693a4"
+  },
+  "splits": [
+    "split1",
+    "split2",
+    "split3"
+  ],
+  "status": "PASS",
+  "validated_counts": {
+    "endpoint_results": 46,
+    "launch_manifests": 12,
+    "shard_completion_markers": 12,
+    "split_method_cells": 276
+  }
+}
