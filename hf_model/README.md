@@ -28,7 +28,7 @@ print(embeddings.shape)  # (2, 768)
 
 This returns the final encoder-layer CLS state. The encoder does not output experimental property predictions by itself. The paper's primary OpenADMET protocol learns a layer mixture, atom-attention pooler, and endpoint head; the repository provides full, LoRA, and frozen fine-tuning modes for new labeled datasets.
 
-For a browser-based start, open the [embedding notebook in Colab](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/01_embeddings.ipynb) or the [fine-tuning notebook](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/02_finetune.ipynb).
+For a browser-based start, open the shared [embedding notebook in Colab](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing) or [fine-tuning notebook](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing). The [source notebooks](https://github.com/caithmac/GRASP/tree/main/notebooks) are versioned with the code repository.
 
 ## Model details and evaluation
 

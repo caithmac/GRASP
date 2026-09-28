@@ -18,7 +18,7 @@ pip install -e .
 
 The core package includes the adapted MolE encoder and the DeBERTa attention implementation. See [license and attribution](#license-and-attribution) below. Model weights are downloaded from [caithmac/GRASP on Hugging Face](https://huggingface.co/caithmac/GRASP) when the default model ID is used.
 
-**Try in Colab:** [extract embeddings](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/01_embeddings.ipynb) · [fine-tune and predict](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/02_finetune.ipynb). Run the cells from top to bottom; the first code cell installs this repository in Colab. For fine-tuning, select a GPU under **Runtime → Change runtime type** when one is available. The example runs on CPU too, more slowly. Colab runtimes are temporary, so download trained predictor files you want to keep.
+**Try in Colab:** [extract embeddings](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing) · [fine-tune and predict](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing). The [repository notebooks](notebooks/) contain the latest source. Run the cells from top to bottom; the first code cell installs this repository in Colab. For fine-tuning, select a GPU under **Runtime → Change runtime type** when one is available. The example runs on CPU too, more slowly. Colab runtimes are temporary, so download trained predictor files you want to keep.
 
 ## Extract representations
 
