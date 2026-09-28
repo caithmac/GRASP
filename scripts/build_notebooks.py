@@ -41,12 +41,14 @@ else:
     subprocess.run([sys.executable, '-m', 'pip', 'install', '-e', '.'], check=True)
 """
     write("01_embeddings.ipynb", [
+        markdown("[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing)\n"),
         markdown("# GRASP molecular embeddings\n\nIn Colab, run all cells in order; the first code cell installs GRASP. Locally, run from the repository root after `pip install -e .`. The pretrained encoder returns representations, not property predictions. This notebook uses local release weights when present; otherwise it downloads `caithmac/GRASP`.\n"),
         code(setup),
         code("from pathlib import Path\nfrom grasp import GRASPEncoder\n\nmodel_source = 'hf_model' if Path('hf_model/model.safetensors').is_file() else 'caithmac/GRASP'\nencoder = GRASPEncoder.from_pretrained(model_source)\nsmiles = ['CCO', 'CC(=O)O', 'c1ccccc1']\nembeddings = encoder.encode(smiles)\nprint(embeddings.shape)  # (3, 768)\n"),
         code("import numpy as np\n\nunit = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)\nprint(np.round(unit @ unit.T, 3))  # illustrative cosine similarities\n"),
     ])
     write("02_finetune.ipynb", [
+        markdown("[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing)\n"),
         markdown("# Fine-tune, save, reload, predict\n\nIn Colab, select a GPU under **Runtime → Change runtime type** if available, then run all cells in order; the first code cell installs GRASP. Locally, run from the repository root after `pip install -e .`. This *illustrative* dataset uses RDKit-computed logP for 30 simple SMILES. It is not an experimental benchmark and does not reproduce paper scores. For real work, replace the CSVs with independent training and structure-separated validation data. Download the saved predictor directory before your Colab runtime ends if you want to keep it.\n"),
         code(setup),
         code("from pathlib import Path\nimport torch\nfrom scripts.make_demo_data import main as make_demo_data\nfrom grasp.train import fit\nfrom grasp import GRASPPredictor\n\nmake_demo_data()\nmodel_source = 'hf_model' if Path('hf_model/model.safetensors').is_file() else 'caithmac/GRASP'\n"),
