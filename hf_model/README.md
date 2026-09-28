@@ -38,7 +38,7 @@ In the arXiv paper, endpoint-specific full fine-tuning of GRASP reaches mean MAE
 
 ## Intended use and limitations
 
-GRASP is intended for research on molecular representations and downstream property models. The encoder was trained on 2D molecular graphs; no 3D geometry or experimental uncertainty is provided. Molecular predictions after downstream fitting can fail outside the training chemical domain and should be checked experimentally. Atom ordering can affect outputs because the encoder has learned absolute position embeddings. The pretraining inputs were limited to 96 heavy atoms; molecules up to 511 atoms can be processed by the code, but larger molecules may be well outside the training distribution. Do not use generated predictions as clinical or toxicological determinations.
+GRASP is intended for research on molecular representations and downstream property models. The encoder was trained on 2D molecular graphs; no 3D geometry or experimental uncertainty is provided. Its radius-0 atom tokens and graph-distance inputs do not encode tetrahedral or E/Z stereochemistry, so the released checkpoint should not be used to distinguish stereoisomers. Molecular predictions after downstream fitting can fail outside the training chemical domain and should be checked experimentally. Atom ordering can affect outputs because the encoder has learned absolute position embeddings; any ordering-related difference is not evidence of stereo sensitivity. The pretraining inputs were limited to 96 heavy atoms; molecules up to 511 atoms can be processed by the code, but larger molecules may be well outside the training distribution. Do not use generated predictions as clinical or toxicological determinations.
 
 ## Training data and license
 

@@ -25,8 +25,11 @@ The released model is the **Step 2 encoder**, after ChEMBL adaptation. It has 12
 
 - **Extract embeddings:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1i-NLImnIBcnv-qn5sun0J0Xkuge8rGhG?usp=sharing)
 - **Fine-tune, save, reload, predict:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BcYhx7Jp_WPJFgvqRw_S53W3dge2CWfQ?usp=sharing)
+- **Explore stereoisomer prediction:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/03_stereo_benchmark.ipynb)
 
 Run cells from top to bottom. The fine-tuning notebook uses a small, **illustrative** RDKit-computed logP dataset; its output is not a paper benchmark. Select a GPU under **Runtime → Change runtime type** when available. Colab storage is temporary, so download any trained predictor you want to keep. The [versioned notebooks](notebooks/) are the source for these examples.
+
+The released encoder does not encode stereochemical assignments in its atom tokens or graph distances. The third notebook compares GRASP with achiral and chiral Morgan features on public odor labels; it is an exploratory check, not a result from the paper.
 
 ## Install and extract embeddings
 

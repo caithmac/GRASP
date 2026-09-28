@@ -1,4 +1,4 @@
-"""Write the two minimal public example notebooks without saved outputs."""
+"""Write the public example notebooks without saved outputs."""
 import json
 from pathlib import Path
 
@@ -54,6 +54,12 @@ else:
         code("from pathlib import Path\nimport torch\nfrom scripts.make_demo_data import main as make_demo_data\nfrom grasp.train import fit\nfrom grasp import GRASPPredictor\n\nmake_demo_data()\nmodel_source = 'hf_model' if Path('hf_model/model.safetensors').is_file() else 'caithmac/GRASP'\n"),
         code("result = fit(model_source=model_source,\n             train_csv='examples/data/demo_train.csv',\n             valid_csv='examples/data/demo_valid.csv',\n             output_dir='runs/notebook_demo',\n             task='regression', method='full',\n             epochs=1, patience=1, batch_size=24,\n             device='cuda' if torch.cuda.is_available() else 'cpu')\nprint(result)\n"),
         code("predictor = GRASPPredictor.from_pretrained('runs/notebook_demo')\nnew_smiles = ['CCO', 'CCOC', 'c1ccccc1']\nprint(list(zip(new_smiles, predictor.predict(new_smiles))))\n"),
+    ])
+    write("03_stereo_benchmark.ipynb", [
+        markdown("[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/03_stereo_benchmark.ipynb)\n"),
+        markdown("# Exploratory stereoisomer prediction check\n\nRun all cells in order. This compares frozen GRASP embeddings, GRASP plus an achiral Morgan fingerprint, and GRASP plus a chiral Morgan fingerprint on [OdorNet](https://github.com/NKU-DOIE/OdorNet)'s CC BY 4.0 **green & herbal** odor labels. Five-fold validation keeps molecules with the same connectivity together. The script reports overall AUROC and ranking accuracy within held-out groups whose stereoisomers have different labels. These curated odor categories are not quantitative assays or GRASP paper benchmarks. The CPU run takes several minutes.\n"),
+        code(setup),
+        code("from examples.stereo_benchmark import main\nmain()\n"),
     ])
 
 
