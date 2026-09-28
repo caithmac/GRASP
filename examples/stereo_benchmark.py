@@ -117,6 +117,7 @@ def main():
     for train, test in folds:
         assert set(groups[train]).isdisjoint(groups[test])
 
+    results = {}
     for name, x in features.items():
         scores = np.empty(len(labels))
         for train, test in folds:
@@ -127,8 +128,11 @@ def main():
             predictor.fit(x[train], labels[train])
             scores[test] = predictor.predict_proba(x[test])[:, 1]
         pair_score, n_groups = pair_accuracy(groups, labels, scores)
-        print(f"{name:24s} AUROC={roc_auc_score(labels, scores):.3f}  "
+        auroc = float(roc_auc_score(labels, scores))
+        results[name] = (auroc, pair_score)
+        print(f"{name:24s} AUROC={auroc:.3f}  "
               f"discordant-pair accuracy={pair_score:.3f} ({n_groups} groups)")
+    return results
 
 
 if __name__ == "__main__":

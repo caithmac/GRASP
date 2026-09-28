@@ -57,9 +57,33 @@ else:
     ])
     write("03_stereo_benchmark.ipynb", [
         markdown("[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/caithmac/GRASP/blob/main/notebooks/03_stereo_benchmark.ipynb)\n"),
-        markdown("# Exploratory stereoisomer prediction check\n\nRun all cells in order. This compares frozen GRASP embeddings, GRASP plus an achiral Morgan fingerprint, and GRASP plus a chiral Morgan fingerprint on [OdorNet](https://github.com/NKU-DOIE/OdorNet)'s CC BY 4.0 **green & herbal** odor labels. Five-fold validation keeps molecules with the same connectivity together. The script reports overall AUROC and ranking accuracy within held-out groups whose stereoisomers have different labels. These curated odor categories are not quantitative assays or GRASP paper benchmarks. The CPU run takes several minutes.\n"),
+        markdown("# Exploratory stereoisomer prediction check\n\nRun all cells in order. This compares frozen GRASP embeddings, GRASP plus an achiral Morgan fingerprint, and GRASP plus a chiral Morgan fingerprint on [OdorNet](https://github.com/NKU-DOIE/OdorNet)'s CC BY 4.0 **green & herbal** odor labels. Five-fold validation keeps molecules with the same connectivity together. The script reports overall AUROC and ranking accuracy within held-out groups whose stereoisomers have different labels. These curated odor categories are not quantitative assays or GRASP paper benchmarks. The CPU run takes several minutes. The plot shows point estimates without uncertainty intervals and saves PNG and SVG files.\n"),
         code(setup),
-        code("from examples.stereo_benchmark import main\nmain()\n"),
+        code("from examples.stereo_benchmark import main\nresults = main()\n"),
+        code("""import numpy as np
+import matplotlib.pyplot as plt
+
+names = list(results)
+positions = np.arange(len(names))[::-1]
+colors = ['#263B5C', '#8292A6', '#087F74']
+fig, axes = plt.subplots(1, 2, figsize=(11, 4), sharey=True, layout='constrained')
+for ax, metric, title in zip(axes, (0, 1), ('Overall AUROC', 'Stereo-pair ranking accuracy')):
+    values = [results[name][metric] for name in names]
+    ax.axvline(0.5, color='#888888', linestyle='--', linewidth=1, label='Chance (0.5)')
+    ax.scatter(values, positions, c=colors, s=90, zorder=3)
+    for value, y in zip(values, positions):
+        ax.annotate(f'{value:.3f}', (value, y), xytext=(8, 0),
+                    textcoords='offset points', va='center')
+    ax.set(xlim=(0, 1), xticks=np.linspace(0, 1, 5), yticks=positions,
+           yticklabels=names, xlabel=title)
+    ax.grid(axis='x', color='#dddddd', linewidth=0.7)
+    ax.set_axisbelow(True)
+axes[1].legend(loc='upper right', frameon=False)
+fig.suptitle('Exploratory OdorNet green & herbal benchmark — 1,678 molecules, 59 discordant groups')
+fig.savefig('stereo_benchmark.png', dpi=200)
+fig.savefig('stereo_benchmark.svg')
+plt.show()
+"""),
     ])
 
 
