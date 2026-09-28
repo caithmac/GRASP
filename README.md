@@ -20,20 +20,6 @@ Molecular structures are plentiful. Experimental measurements are scarce, scatte
 
 The released model is the **Step 2 encoder**, after ChEMBL adaptation. It has 12 layers, width 768, 12 attention heads, 93.5 million parameters, and a 211-token vocabulary. It is a molecular representation model, not a ready-made experimental property predictor.
 
-## What the paper found
-
-On **23 OpenADMET endpoints**, evaluated over three reconstructed cluster-held-out splits per endpoint, full fine-tuning reached the lowest mean test MAE among the compared methods:
-
-| Method | Mean MAE ↓ | Endpoints where GRASP was lower |
-| :-- | --: | --: |
-| **GRASP, full fine-tuning** | **0.374** | — |
-| CheMeleon, full fine-tuning | 0.383 | 12 / 23 |
-| ECFP4–LightGBM | 0.408 | 16 / 23 |
-| Chemprop D-MPNN | 0.440 | 22 / 23 |
-
-The margin over CheMeleon is small and varies by endpoint. In the matched stage comparison, adding the complete ChEMBL adaptation stage lowered mean MAE from **0.407 to 0.374** and improved **21 of 23** endpoints. That comparison includes additional ChEMBL training and molecular exposure; it does not isolate assay labels alone. On the separate **22-task TDC ADMET** benchmark, GRASP had the better point estimate than the released CheMeleon result on **13 tasks**. That TDC comparison is descriptive because the models were not trained and selected in one paired pipeline. See the paper and [reproduction supplement](reproduction/README.md) for the split construction, per-endpoint scores, and limitations.
-
-**These are endpoint-specific results.** Calling `encode()` gives a final-layer CLS embedding. The paper's OpenADMET predictors instead learn a mixture of layers 4, 8, 10, and 12, attention-pool the atom tokens, and train a property head. The pretrained encoder alone does not produce those MAEs or predict an experimental property.
 
 ## Start with the notebooks
 
