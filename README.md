@@ -78,7 +78,7 @@ python -m grasp predict \
 
 ## Checkpoint and reproduction
 
-The original 50,000-step Step 2 state dict has SHA-256 `7940ca66fc8f6785d6ae2e63b3965f69425e872cd28f4a975493fb1972742ee1`. The released `model.safetensors` is a tensor-identical conversion; [`scripts/prepare_model.py`](scripts/prepare_model.py) checks the source hash and every converted tensor. We publish the vocabulary and architecture configuration beside the weights on [Hugging Face](https://huggingface.co/caithmac/GRASP).
+The original 50,000-step Step 2 state dict. The released `model.safetensors` is a tensor-identical conversion; [`scripts/prepare_model.py`](scripts/prepare_model.py) checks the source hash and every converted tensor. We publish the vocabulary and architecture configuration beside the weights on [Hugging Face](https://huggingface.co/caithmac/GRASP).
 
 The [reproduction directory](reproduction/README.md) contains the sanitized training, evaluation, split, and provenance material. Raw ZINC20, ChEMBL, OpenADMET, and TDC data are not redistributed. GRASP uses 2D molecular graphs; it does not model 3D geometry or experimental uncertainty. Predictions from a fine-tuned head need domain checks and experimental validation.
 
