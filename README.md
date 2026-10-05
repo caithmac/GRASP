@@ -88,4 +88,4 @@ Satya Pratik Srivastava, Rohan Gorantla, Sharath Krishna Chundru, Harshit Singh,
 
 ## License and attribution
 
-The adapted MolE-derived code and model retain [CC BY-NC 4.0](LICENSE) terms. The bundled DeBERTa code retains its [MIT license](vendor/DEBERTA_LICENSE). See [NOTICE](NOTICE) for attribution, and respect the terms of any datasets used for fine-tuning.
+This repository is released under the MIT License.
