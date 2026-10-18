@@ -33,12 +33,18 @@ class LoRALinear(nn.Module):
 
 
 class PropertyNetwork(nn.Module):
-    def __init__(self, architecture: dict, method: str, *, attach_lora: bool = True):
+    def __init__(self, architecture: dict, method: str, *, attach_lora: bool = True,
+                 mix_layers: Iterable[int] = (4, 8, 10, 12)):
         super().__init__()
         if method not in {"full", "lora", "frozen"}:
             raise ValueError(f"Unknown adaptation method: {method}")
         self.method = method
         cfg = ModelConfig.from_dict(architecture)
+        self.mix_layers = tuple(mix_layers)
+        if (not self.mix_layers or len(set(self.mix_layers)) != len(self.mix_layers)
+                or any(type(layer) is not int or not 1 <= layer <= cfg.num_hidden_layers
+                       for layer in self.mix_layers)):
+            raise ValueError("mix_layers must contain distinct, one-based encoder layer indices")
         self.encoder = AtomEnvEmbeddings(cfg)
         for parameter in self.encoder.parameters():
             parameter.requires_grad = False
@@ -47,7 +53,7 @@ class PropertyNetwork(nn.Module):
                 parameter.requires_grad = True
         elif method == "lora" and attach_lora:
             self.add_lora()
-        self.layer_logits = nn.Parameter(torch.zeros(4))
+        self.layer_logits = nn.Parameter(torch.zeros(len(self.mix_layers)))
         self.pooler = nn.Linear(cfg.hidden_size, 1)
         self.head = nn.Sequential(nn.LayerNorm(cfg.hidden_size),
                                   nn.Linear(cfg.hidden_size, 512), nn.GELU(),
@@ -71,7 +77,7 @@ class PropertyNetwork(nn.Module):
                                   attention_mask=input_mask, relative_pos=relative_pos)
         weights = torch.softmax(self.layer_logits, dim=0)
         hidden = sum(weights[i] * output["hidden_states"][layer - 1]
-                     for i, layer in enumerate((4, 8, 10, 12)))
+                     for i, layer in enumerate(self.mix_layers))
         atom_mask = input_mask.bool().clone()
         atom_mask[:, 0] = False
         logits = self.pooler(hidden).squeeze(-1).masked_fill(~atom_mask, float("-inf"))
@@ -88,15 +94,18 @@ class GRASPPredictor:
         self.device = torch.device(device)
 
     @classmethod
-    def from_encoder(cls, encoder: GRASPEncoder, *, task: str, method: str = "full") -> "GRASPPredictor":
+    def from_encoder(cls, encoder: GRASPEncoder, *, task: str, method: str = "full",
+                     mix_layers: Iterable[int] = (4, 8, 10, 12)) -> "GRASPPredictor":
         if task not in {"regression", "binary"}:
             raise ValueError("task must be regression or binary")
-        model = PropertyNetwork(encoder.config["architecture"], method, attach_lora=False)
+        model = PropertyNetwork(encoder.config["architecture"], method, attach_lora=False,
+                                mix_layers=mix_layers)
         model.encoder.load_state_dict(encoder.model.state_dict(), strict=True)
         if method == "lora":
             model.add_lora()
         config = {"architecture": encoder.config["architecture"],
                   "task": task, "method": method,
+                  "mix_layers": list(model.mix_layers),
                   "source_checkpoint_sha256": encoder.config["source_checkpoint_sha256"],
                   "target_mean": 0.0, "target_std": 1.0,
                   "output": "probability" if task == "binary" else "original_target_units"}
@@ -107,7 +116,8 @@ class GRASPPredictor:
                         device: str | torch.device | None = None) -> "GRASPPredictor":
         files = resolve_files(directory, ("predictor.safetensors", "predictor_config.json", "vocab.json"))
         config = json.loads(files["predictor_config.json"].read_text(encoding="utf-8"))
-        model = PropertyNetwork(config["architecture"], config["method"])
+        model = PropertyNetwork(config["architecture"], config["method"],
+                                mix_layers=config.get("mix_layers", (4, 8, 10, 12)))
         model.load_state_dict(load_file(files["predictor.safetensors"], device="cpu"), strict=True)
         model.eval()
         chosen_device = device or ("cuda" if torch.cuda.is_available() else "cpu")

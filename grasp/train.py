@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import random
 from pathlib import Path
+from typing import Iterable
 
 import numpy as np
 import pandas as pd
@@ -37,7 +38,8 @@ def fit(*, model_source: str | Path, train_csv: str | Path, valid_csv: str | Pat
         smiles_column: str = "smiles", target_column: str = "target",
         epochs: int = 60, patience: int = 12, batch_size: int = 64,
         learning_rate: float | None = None, seed: int = 0,
-        device: str | None = None) -> dict:
+        device: str | None = None,
+        mix_layers: Iterable[int] = (4, 8, 10, 12)) -> dict:
     if epochs < 1 or patience < 1 or batch_size < 1:
         raise ValueError("epochs, patience, and batch_size must be positive")
     if method not in {"full", "lora", "frozen"}:
@@ -56,7 +58,8 @@ def fit(*, model_source: str | Path, train_csv: str | Path, valid_csv: str | Pat
     if task == "binary" and len(np.unique(train_y)) != 2:
         raise ValueError("Binary training data must contain both classes")
     encoder = GRASPEncoder.from_pretrained(model_source, device=device)
-    predictor = GRASPPredictor.from_encoder(encoder, task=task, method=method)
+    predictor = GRASPPredictor.from_encoder(encoder, task=task, method=method,
+                                           mix_layers=mix_layers)
     use_bf16 = predictor.device.type == "cuda" and torch.cuda.is_bf16_supported()
     if task == "regression":
         mean = float(np.mean(train_y))
@@ -97,6 +100,8 @@ def fit(*, model_source: str | Path, train_csv: str | Path, valid_csv: str | Pat
                 target = batch.target_labels.float().reshape_as(output)
                 loss = (nn.functional.binary_cross_entropy_with_logits(output, target)
                         if task == "binary" else nn.functional.smooth_l1_loss(output, target))
+            if not torch.isfinite(loss):
+                raise FloatingPointError("Non-finite training loss")
             loss.backward()
             torch.nn.utils.clip_grad_norm_(trainable, 1.0)
             step += 1
@@ -111,6 +116,8 @@ def fit(*, model_source: str | Path, train_csv: str | Path, valid_csv: str | Pat
                                     enabled=use_bf16):
                     validation_outputs.append(predictor.model(batch.to(predictor.device)).float().cpu())
         raw = torch.cat(validation_outputs).numpy()
+        if not np.isfinite(raw).all():
+            raise FloatingPointError("Non-finite validation predictions")
         if task == "regression":
             score = float(np.mean(np.abs(raw * predictor.config["target_std"]
                                          + predictor.config["target_mean"] - valid_y)))
